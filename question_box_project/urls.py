@@ -15,10 +15,29 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework import routers
 from django.contrib.auth import views as auth_views
+from question_box_app import views
+
+
+router = routers.DefaultRouter()
+router.register(r'question_box_app', views.UserProfileViewSet)
+router.register(r'question_box_app', views.QuestionViewSet)
+router.register(r'question_box_app', views.AnswerViewSet)
+router.register(r'question_box_app', views.QuestionCommentViewSet)
+router.register(r'question_box_app', views.AnswerCommentViewSet)
+router.register(r'question_box_app', views.QuestionVoteViewSet)
+router.register(r'question_box_app', views.AnswerVoteViewSet)
+router.register(r'question_box_app', views.TagViewSet)
+
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^login/$', auth_views.login, name="login"),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^question_box_app/', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

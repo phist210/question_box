@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    rank = models.IntegerField()
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    score = models.IntegerField()
 
 
 class Question(models.Model):
