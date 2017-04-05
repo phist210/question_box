@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'question_box_app.apps.QuestionBoxAppConfig'
+    'question_box_app.apps.QuestionBoxAppConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

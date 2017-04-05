@@ -21,14 +21,14 @@ from question_box_app import views
 
 
 router = routers.DefaultRouter()
-router.register(r'question_box_app', views.UserProfileViewSet)
-router.register(r'question_box_app', views.QuestionViewSet)
-router.register(r'question_box_app', views.AnswerViewSet)
-router.register(r'question_box_app', views.QuestionCommentViewSet)
-router.register(r'question_box_app', views.AnswerCommentViewSet)
-router.register(r'question_box_app', views.QuestionVoteViewSet)
-router.register(r'question_box_app', views.AnswerVoteViewSet)
-router.register(r'question_box_app', views.TagViewSet)
+router.register(r'question_box_app/api/user', views.UserProfileViewSet)
+router.register(r'question_box_app/api/question', views.QuestionViewSet)
+router.register(r'question_box_app/api/answer', views.AnswerViewSet)
+router.register(r'question_box_app/api/comment/question', views.QuestionCommentViewSet)
+router.register(r'question_box_app/api/comment/answer', views.AnswerCommentViewSet)
+router.register(r'question_box_app/api/vote/question', views.QuestionVoteViewSet)
+router.register(r'question_box_app/api/vote/answer', views.AnswerVoteViewSet)
+router.register(r'question_box_app/api/tag', views.TagViewSet)
 
 
 # Wire up our API using automatic URL routing.
