@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'question_box_app/'
 
 # Application definition
 
