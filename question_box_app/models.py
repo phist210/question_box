@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 
 
 class UserProfile(models.Model):
@@ -38,21 +37,17 @@ class AnswerComment(models.Model):
 
 
 class AnswerVote(models.Model):
-    id_answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
 
 
 class QuestionVote(models.Model):
-    id_question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
 
 
 class Tag(models.Model):
     text = models.TextField(max_length=10)
-
-
-class TagQuestion(models.Model):
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question_id = models.ManyToManyField(Question)
