@@ -4,16 +4,15 @@
         {% load static %}
         <meta charset="utf-8">
         <title>Question Box</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+        <link rel="shortcut icon" href="{% static "/images/stackoverflow.png" type="image/x-icon" alt='stack' %}"/>
+        {% block extra_head %}{% endblock %}
     </head>
     <body>
       {% include 'question_box_app/header.html' %}
         {% block content %}
         {% endblock %}
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/base.js' %}"></script>
       {% block javascript %}
       {% endblock %}
     </body>
