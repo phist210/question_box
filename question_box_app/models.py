@@ -12,14 +12,14 @@ class Question(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextArea(max_length=1000)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
 
 class Answer(models.Model):
     text = models.TextArea(max_length=10000)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     accepted_answer = models.BooleanField(default=False)
 
 
@@ -27,7 +27,7 @@ class QuestionComment(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextArea(max_length=10000)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
 
 class AnswerComment(models.Model):
