@@ -1,15 +1,29 @@
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/header.css' %}" rel="stylesheet">
+<link href="{% static 'css/header.css' %}?v=00002" rel="stylesheet">
+<title>Question Box</title>
 {% endblock %}
 
+
 {% block content %}
-<ul>
-  <div id='logo'>
-    <a href='/'>
-      <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='35' width='35'/>
-    </a>
+<div class='header'>
+  <div class='-container'>
+    <ul>
+      <div id='logo'>
+        <a href='/'>
+          <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='45' width='50'/>
+        </a>
+      </div>
+
+      {% if user.is_authenticated %}
+      <li style='float: right'><a id='logout' href='/logout'>Logout</a></li>
+      <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
+
+      {% else %}
+      <li style='float: right'><a id='login' href='/login'>Login</a></li>
+      {% endif %}
+
+    </ul>
   </div>
-  <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
-</ul>
+</div>
 {% endblock %}

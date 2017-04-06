@@ -2,16 +2,16 @@
 {% block extra_head %}
 {% load staticfiles %}
 <link href="{% static 'css/base.css' %}" rel="stylesheet">
-<title>Login</title>
+<title>{{question.title}}</title>
 {% endblock %}
 
 {% block content %}
+{% include 'question_box_app/header.html' %}
+
 <div class='container'>
-   <h2>Login</h2>
-   <form method="POST">
-       {% csrf_token %}
-       {{ form.as_p }}
-     <button type="submit">Login</button>
-   </form>
+
+    {{user}}: {{question.title}}
+
 </div>
+
 {% endblock %}

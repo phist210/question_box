@@ -6,8 +6,27 @@
 
 {% block content %}
 {% include 'question_box_app/header.html' %}
+
 <div class='container'>
-  ksjaldfhlkjashdfkljhaskjhfk
+  <div class='block'>
+  </div>
+
+  <div class='ask_block'>
+
+    <div id="q_form">
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+          <input id="submit" type='submit' value='Submit'/>
+        </form>
+
+    </div>
+
+  </div>
 </div>
 
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/askq.js' %}"></script>
 {% endblock %}
