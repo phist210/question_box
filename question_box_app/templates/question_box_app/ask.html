@@ -1,0 +1,15 @@
+{% extends 'question_box_app/base.html' %}
+{% load static %}
+{% block content %}
+<div id="q_form">
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input id="submit" type='submit' value='Submit'/>
+</form>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/askq.js' %}"></script>
+{% endblock %}
