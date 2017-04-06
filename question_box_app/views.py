@@ -18,6 +18,10 @@ def question(request, question_id):
     return render(request, 'question_box_app/question.html', {'question': question})
 
 
+def ans_comment(request, question_id=1):
+    return render(request, 'question_box_app/anscomment.html', {'form': CommentOnAns})
+
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

@@ -1,0 +1,24 @@
+{% extends 'question_box_app/base.html'%}
+
+{% block extra_head %}
+{% load staticfiles %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<title>Answer Comments</title>
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+  <div id="comment_form">
+    <h2>Comment on an Answer</h2>
+    <form method="POST">
+       {% csrf_token %}
+       {{ form.as_p }}
+     <input type="submit" id="comment" value='Comment'/>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/anscomment.js' %}"></script>
+{% endblock %}
