@@ -1,15 +1,19 @@
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/header.css' %}" rel="stylesheet">
+<link href="{% static 'css/header.css' %}?v=00002" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<ul>
-  <div id='logo'>
-    <a href='/'>
-      <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='35' width='35'/>
-    </a>
+<div class='header'>
+  <div class='-container'>
+    <ul>
+      <div id='logo'>
+        <a href='/'>
+          <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='45' width='50'/>
+        </a>
+      </div>
+      <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
+    </ul>
   </div>
-  <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
-</ul>
+</div>
 {% endblock %}

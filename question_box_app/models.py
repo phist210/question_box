@@ -3,60 +3,66 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     score = models.IntegerField()
 
 
 class Question(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __repr__(self):
+        return "does this work"
+
+    def __str__(self):
+        return '{}. {}'.format(self.pk, self.title)
 
 
 class Answer(models.Model):
     text = models.TextField(max_length=10000)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     # accepted_answer = models.BooleanField(default=False)
 #
 #
 # class AcceptedAnswer(models.Model):  back burnah
-#     answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
-#     # question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+#     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+#     # question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
 
 class QuestionComment(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField(max_length=10000)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
 
 class AnswerComment(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
     text = models.TextField(max_length=10000)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
 
 class AnswerVote(models.Model):
-    answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
 
 
 class QuestionVote(models.Model):
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
 
 
 class Tag(models.Model):
     text = models.TextField(max_length=10)
-    question_id = models.ManyToManyField(Question)
+    question = models.ManyToManyField(Question)
