@@ -10,7 +10,7 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'question_box_app/index.html', {'form': AskQuestion})
+    return render(request, 'question_box_app/index.html')
 
 
 def question(request, question_id):
@@ -31,6 +31,10 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def ask(request):
+    return render(request, 'question_box_app/ask.html', {'form': AskQuestion})
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

@@ -14,14 +14,13 @@ body{
 
 .question{
   padding: 10px;
-  background-color: #ccc;
+  border-bottom: 1px black solid;
   float: left;
-  width: 30%
+  width: 80%
 }
 
 .ask_block{
   margin: 0 auto;
-  float: left;
   width: 70%;
   border: 1px solid black;
 }
