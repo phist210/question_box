@@ -21,14 +21,14 @@ from question_box_app import views
 
 
 router = routers.DefaultRouter()
-router.register(r'/api/user', views.UserProfileViewSet)
-router.register(r'/api/question', views.QuestionViewSet)
-router.register(r'/api/answer', views.AnswerViewSet)
-router.register(r'/api/comment/question', views.QuestionCommentViewSet)
-router.register(r'/api/comment/answer', views.AnswerCommentViewSet)
-router.register(r'/api/vote/question', views.QuestionVoteViewSet)
-router.register(r'/api/vote/answer', views.AnswerVoteViewSet)
-router.register(r'/api/tag', views.TagViewSet)
+router.register(r'user', views.UserProfileViewSet)
+router.register(r'question', views.QuestionViewSet)
+router.register(r'answer', views.AnswerViewSet)
+router.register(r'comment/question', views.QuestionCommentViewSet)
+router.register(r'comment/answer', views.AnswerCommentViewSet)
+router.register(r'vote/question', views.QuestionVoteViewSet)
+router.register(r'vote/answer', views.AnswerVoteViewSet)
+router.register(r'tag', views.TagViewSet)
 
 
 # Wire up our API using automatic URL routing.
@@ -36,8 +36,8 @@ router.register(r'/api/tag', views.TagViewSet)
 urlpatterns = [
     url(r'^login/$', auth_views.login, name="login"),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^question_box_app/', include('question_box_app.urls')),
+    url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
