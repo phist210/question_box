@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
+from .forms import *
 
 
 # Create your views here.
@@ -24,6 +25,11 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def ask_q(request):
+    context = {'form': AskQuestion}
+    return render(request, 'question_box_app/ask.html', context)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

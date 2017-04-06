@@ -34,6 +34,7 @@ router.register(r'tag', views.TagViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    url(r'^ask/', views.ask_q, name='ask'),
     url(r'^login/$', auth_views.login, name="login"),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
