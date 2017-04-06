@@ -4,13 +4,12 @@
         {% load static %}
         <meta charset="utf-8">
         <title>Question Box</title>
-        <link rel="shortcut icon" href="{% static "/images/stackoverflow.png" type="image/x-icon" alt='stack' %}"/>
+        <link rel="shortcut icon" href="{% static '/images/stackoverflow.png' type="image/x-icon" alt='stack' %}"/>
         {% block extra_head %}{% endblock %}
     </head>
     <body>
-      {% include 'question_box_app/header.html' %}
-        {% block content %}
-        {% endblock %}
+      {% block content %}
+      {% endblock %}
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
       <script src="{% static 'js/base.js' %}"></script>
       {% block javascript %}
