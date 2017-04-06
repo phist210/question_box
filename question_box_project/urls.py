@@ -36,6 +36,7 @@ router.register(r'tag', views.TagViewSet)
 urlpatterns = [
     url(r'^login/$', auth_views.login, name="login"),
     url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^signup/$', views.signup, name='signup'),
     url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
