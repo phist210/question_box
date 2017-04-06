@@ -1,12 +1,17 @@
 {% extends 'question_box_app/base.html' %}
-
-{% block title %} Login {% endblock %}
+{% block extra_head %}
+{% load staticfiles %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<title>Login</title>
+{% endblock %}
 
 {% block content %}
- <h2>Please Login</h2>
- <form method="POST">
-     {% csrf_token %}
-     {{ form.as_p }}
-   <button type="submit">Login</button>
- </form>
+<div class='container'>
+   <h2>Login</h2>
+   <form method="POST">
+       {% csrf_token %}
+       {{ form.as_p }}
+     <button type="submit">Login</button>
+   </form>
+</div>
 {% endblock %}

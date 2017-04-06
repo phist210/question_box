@@ -1,7 +1,9 @@
 {% block extra_head %}
 {% load staticfiles %}
 <link href="{% static 'css/header.css' %}?v=00002" rel="stylesheet">
+<title>Question Box</title>
 {% endblock %}
+
 
 {% block content %}
 <div class='header'>
@@ -12,8 +14,15 @@
           <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='45' width='50'/>
         </a>
       </div>
+
+      {% if user.is_authenticated %}
       <li style='float: right'><a id='logout' href='/logout'>Logout</a></li>
       <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
+
+      {% else %}
+      <li style='float: right'><a id='login' href='/login'>Login</a></li>
+      {% endif %}
+
     </ul>
   </div>
 </div>

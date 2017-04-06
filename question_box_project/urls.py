@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from django.contrib.auth import views as auth_views
 from question_box_app import views
+from django.contrib.auth.views import login
+from django.contrib.auth.views import logout
 
 
 router = routers.DefaultRouter()
@@ -34,8 +35,18 @@ router.register(r'tag', views.TagViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    url(r'^login/$', auth_views.login, name="login"),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(
+        regex=r'^login/$',
+        view=login,
+        kwargs={'template_name': 'registration/login.html'},
+        name='login'
+    ),
+    url(
+        regex=r'^logout/$',
+        view=logout,
+        kwargs={'next_page': '/'},
+        name='logout'
+    ),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
