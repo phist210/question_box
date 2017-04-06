@@ -12,6 +12,7 @@ class Question(models.Model):
     text = models.TextField(max_length=1000)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class Answer(models.Model):
@@ -19,6 +20,7 @@ class Answer(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     # accepted_answer = models.BooleanField(default=False)
 #
 #
@@ -32,6 +34,7 @@ class QuestionComment(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField(max_length=10000)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class AnswerComment(models.Model):
@@ -39,6 +42,7 @@ class AnswerComment(models.Model):
     answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
     text = models.TextField(max_length=10000)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class AnswerVote(models.Model):

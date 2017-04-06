@@ -8,7 +8,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ('user_id', 'score')
 
 
-class QuestionSerializer(serializers.ModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):  # might be useful to list answers for respective question, it might not be
     class Meta:
         model = Question
         fields = ('title', 'text', 'user_id', 'created')
