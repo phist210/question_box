@@ -24,6 +24,9 @@ class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '{}'.format(self.text)
     # accepted_answer = models.BooleanField(default=False)
 #
 #

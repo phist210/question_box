@@ -1,18 +1,23 @@
-from django.http import HttpResponseRedirect
-
-
 // AJAX for answering
-$('.button').click(function(event) {
-
-    let form_data = {text: "foo", question_id: 4, user_id: 1}
+$('#submit_answer').click(function(event) {
+    event.preventDefault();
+    console.log($('form').serializeArray());
+    let $info = $('#ans_form :input');
+    let $text = $info[1].value;
+    let $form = {
+      "text": $text,
+      "question": "",
+      "user": 1,
+      "created": "",
+      'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
+    }
+    // let form_data = {text: "foo", question_id: 4, user_id: 1}
     // let form_data = {text: event.text, question_id: question_id, user_id: user_id}
 
-    event.preventDefault();
-    console.log("Answer Question is working!") // sanity check
     $.ajax({
-        url : "/api/answer/", // the endpoint
+        url : "/api/question/", // the endpoint
         type : "POST", // http method
-        data : form_data,
+        data : $form,
         // handle a successful response
         success : function(json) {
             $('#answer_text').val(''); // remove the value from the input
@@ -25,5 +30,4 @@ $('.button').click(function(event) {
             console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
         }
     });
-    HttpResponseRedirect('/api/answer/')
 });
