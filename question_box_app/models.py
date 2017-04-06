@@ -10,16 +10,21 @@ class UserProfile(models.Model):
 class Question(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
 
 class Answer(models.Model):
     text = models.TextField(max_length=10000)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
-    accepted_answer = models.BooleanField(default=False)
+    # accepted_answer = models.BooleanField(default=False)
+#
+#
+# class AcceptedAnswer(models.Model):  back burnah
+#     answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
+#     # question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
 
 
 class QuestionComment(models.Model):
@@ -30,10 +35,10 @@ class QuestionComment(models.Model):
 
 
 class AnswerComment(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
     text = models.TextField(max_length=10000)
     created = models.DateTimeField(auto_now_add=True)
-    answer_id = models.ForeignKey(Answer, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class AnswerVote(models.Model):
