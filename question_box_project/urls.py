@@ -35,7 +35,6 @@ router.register(r'tag', views.TagViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-<<<<<<< HEAD
     url(
         regex=r'^login/$',
         view=login,
@@ -48,11 +47,7 @@ urlpatterns = [
         kwargs={'next_page': '/'},
         name='logout'
     ),
-=======
-    url(r'^ask/', views.ask_q, name='ask'),
-    url(r'^login/$', auth_views.login, name="login"),
-    url(r'^logout/$', auth_views.logout, name='logout'),
->>>>>>> askqForm
+    url(r'^ask/', views.index, name='ask'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),

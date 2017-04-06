@@ -18,3 +18,10 @@ body{
   float: left;
   width: 30%
 }
+
+.ask_block{
+  margin: 0 auto;
+  float: left;
+  width: 70%;
+  border: 1px solid black;
+}

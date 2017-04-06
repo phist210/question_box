@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from .forms import AskQuestion
 from django.contrib.auth import authenticate, login
 from rest_framework import viewsets
 from .models import *
@@ -9,7 +10,7 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'question_box_app/index.html')
+    return render(request, 'question_box_app/index.html', {'form': AskQuestion})
 
 
 def question(request, question_id):
@@ -30,11 +31,6 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
-
-
-def ask_q(request):
-    context = {'form': AskQuestion}
-    return render(request, 'question_box_app/ask.html', context)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
