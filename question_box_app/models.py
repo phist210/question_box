@@ -14,9 +14,6 @@ class Question(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    def __repr__(self):
-        return "does this work"
-
     def __str__(self):
         return '{}. {}'.format(self.pk, self.title)
 

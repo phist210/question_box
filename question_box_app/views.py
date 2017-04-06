@@ -11,6 +11,11 @@ def index(request):
     return render(request, 'question_box_app/index.html')
 
 
+def question(request, question_id):
+    question = Question.objects.get(pk=question_id)
+    return render(request, 'question_box_app/question.html', {'question': question})
+
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

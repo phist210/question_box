@@ -1,0 +1,16 @@
+{% extends 'question_box_app/base.html' %}
+{% block extra_head %}
+{% load staticfiles %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% include 'question_box_app/header.html' %}
+
+<div class='container'>
+
+    {{user}}: {{question.title}}
+
+</div>
+
+{% endblock %}
