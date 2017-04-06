@@ -17,7 +17,7 @@ class QuestionSerializer(serializers.ModelSerializer):  # might be useful to lis
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ('text', 'question_id', 'user_id', 'created', 'accepted_answer')
+        fields = ('text', 'question_id', 'user_id', 'created')
 
 
 class QuestionCommentSerializer(serializers.ModelSerializer):

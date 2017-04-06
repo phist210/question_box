@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
+from .forms import AnswerQuestion
 
 
 # Create your views here.
@@ -24,6 +26,26 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def answer(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AnswerQuestion(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/api/answer/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AnswerQuestion()
+
+    return render(request, 'question_box_app/answer.html', {'form': form})
+
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
