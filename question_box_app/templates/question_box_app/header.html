@@ -17,6 +17,7 @@
 
       {% if user.is_authenticated %}
       <li style='float: right'><a id='logout' href='/logout'>Logout</a></li>
+      <li style='float: right'><a target='_blank' href="/ask">?</a></li>
       <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
 
       {% else %}

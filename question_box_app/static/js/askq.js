@@ -11,7 +11,7 @@ $('#submit').click(function(event) {
         "title": $title,
         "text": $text,
         "user": 1,
-        "created": "",
+        "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
     $.ajax({
@@ -20,6 +20,7 @@ $('#submit').click(function(event) {
         data: $form,
         success: function(result) {
             alert("Question added!");
+            window.location.href = "/";
         }
     })
 });
