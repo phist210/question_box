@@ -48,6 +48,7 @@ urlpatterns = [
         name='logout'
     ),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^answer/$', views.answer, name="answer"),
     url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
