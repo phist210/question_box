@@ -13,6 +13,8 @@
     <form method="POST">
        {% csrf_token %}
        {{ form.as_p }}
+       <input name="answer_id" value="{{answer.id}}" style="display:none"/>
+       <input name="user_id" value="{{user.id}}" style="display:none"/>
      <input type="submit" id="comment" value="Submit"/>
     </form>
   </div>

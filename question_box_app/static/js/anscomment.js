@@ -4,18 +4,18 @@ $('#comment').click(function(event) {
 
     event.preventDefault();
     let $info = $('#comment_form :input');
+    console.log($info.serializeArray())
     for(var i = 0; i < $info.length; i++) {
         console.log($info[i]);
     }
-    //let $title = $info[2].value;
     let $text = $info[1].value;
-    let $user = $info[0].value;
-    console.log($info[1].value);
+    let $answer = $info[2].value;
+    let $user = $info[3].value;
 
     let $form = {
         "text": $text,
-        "user": 1,
-        "answer": 1,
+        "user": $user,
+        "answer": $answer,
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
     console.log($form);
