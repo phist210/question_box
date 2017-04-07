@@ -5,11 +5,12 @@ $('#submit_qcomment').click(function(event) {
     event.preventDefault();
     var $info = $('#qcomment_form :input');
     var $text = $info[1].value;
-    var $question = 1;
+    var $questionid = $info[2].value;
+    var $user = Number($info[3].value);
     var $form = {
         "text": $text,
-        "question": 1,
-        "user": 1,
+        "question": $questionid,
+        "user": $user,
         "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
