@@ -25,6 +25,8 @@
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
+      <input name="question_id" value="{{question.id}}" style="display:none"/>
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
       <input id="submit_qcomment" type='submit' value='Submit Comment'/>
   </form>
   </div>
