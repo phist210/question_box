@@ -1,29 +1,42 @@
-from django.http import HttpResponseRedirect
-
 
 // AJAX for answering
-$('.button').click(function(event) {
-
-    let form_data = {text: "foo", question_id: 4, user_id: 1}
-    // let form_data = {text: event.text, question_id: question_id, user_id: user_id}
-
+$('#submit').click(function(event) {
+    console.log($('form').serializeArray());
     event.preventDefault();
-    console.log("Answer Question is working!") // sanity check
+    var $info = $('#a_form :input');
+    var $text = $info[1].value;
+    var $question = 1;
+    var $form = {
+        "text": $text,
+        "question": 1,
+        "user": 1,
+        "created": " ",
+        'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
+    }
     $.ajax({
-        url : "/api/answer/", // the endpoint
-        type : "POST", // http method
-        data : form_data,
-        // handle a successful response
-        success : function(json) {
-            $('#answer_text').val(''); // remove the value from the input
-            console.log(json); // log the returned json to the console
-            console.log("success"); // another sanity check
-        },
-
-        // handle a non-successful response
-        error : function(xhr,errmsg,err) {
-            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        type:'POST',
+        url: '/api/answer/',
+        data: $form,
+        success: function(result) {
+            alert("Answer added!");
+            window.location.href = "#";
         }
-    });
-    HttpResponseRedirect('/api/answer/')
+    })
 });
+
+function getAnswers() {
+  var answerApi = "/api/answer/";
+  $.ajax({url: answerApi, success: function(result) {
+    var answerLength = result.length;
+    console.log(result);
+    for(var i = 0; (i + 1) <= answerLength; i++){
+      var answerTitle = result[i].title;
+      var answerText = result[i].text;
+      var answerID = i + 1;
+        $('div.block').append('<div class=answer id=' + answerID + '>' + '<br>' + answerText + "</div>");
+      };
+    }
+  });
+}
+
+getAnswers();
