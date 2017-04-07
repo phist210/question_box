@@ -26,13 +26,13 @@ class AnswerSerializer(serializers.ModelSerializer):
 class QuestionCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionComment
-        fields = ('text', 'question', 'user', 'created')
+        fields = ('text', 'question', 'user', 'created', 'id')
 
 
 class AnswerCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnswerComment
-        fields = ('text', 'answer', 'user', 'created')
+        fields = ('text', 'answer', 'user', 'created', 'id')
 
 
 class QuestionVoteSerializer(serializers.ModelSerializer):
