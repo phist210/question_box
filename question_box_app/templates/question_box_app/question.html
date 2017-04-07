@@ -2,7 +2,7 @@
 {% block extra_head %}
 {% load staticfiles %}
 <link href="{% static 'css/base.css' %}?v=00002" rel="stylesheet">
-<title>{{question.title}}</title>
+<title>Question Box: {{question.title}}</title>
 {% endblock %}
 
 {% block content %}
@@ -25,18 +25,20 @@
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
-      <input id="submit_qcomment" type='submit' value='Submit Comment'/>
-  </form>
+          <input name="question_id" value="{{question.id}}" style="display:none"/>
+          <input name="user_id" value="{{user.id}}" style="display:none"/>
+          <input id="submit_qcomment" type='submit' value='Submit Comment'/>
+      </form>
   </div>
 
   <div id="a_form">
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
-      <input name="question_id" value="{{question.id}}" style="display:none"/>
-      <input name="user_id" value="{{user.id}}" style="display:none"/>
-      <input id="submit_answer" type='submit' value='Submit Answer'/>
-  </form>
+          <input name="question_id" value="{{question.id}}" style="display:none"/>
+          <input name="user_id" value="{{user.id}}" style="display:none"/>
+          <input id="submit_answer" type='submit' value='Submit Answer'/>
+      </form>
   </div>
 
 </div>
@@ -44,4 +46,5 @@
 {% endblock %}
 {% block javascript %}
 <script src="{% static 'js/answer.js' %}"></script>
+<script src="{% static 'js/qcomment.js' %}"></script>
 {% endblock %}
