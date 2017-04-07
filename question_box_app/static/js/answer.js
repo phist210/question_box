@@ -1,7 +1,6 @@
 
 // AJAX for answering
 $('#submit_answer').click(function(event) {
-    console.log($('form').serializeArray());
     event.preventDefault();
     var $info = $('#a_form :input');
     var $text = $info[1].value;
@@ -14,7 +13,6 @@ $('#submit_answer').click(function(event) {
         "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
-    console.log($form);
     $.ajax({
         type:'POST',
         url: '/api/answer/',
@@ -32,7 +30,6 @@ function getAnswers() {
   var $last_segment = $url_array[$url_array.length-1];  // Get the last part of the array (-1)
   $.ajax({url: $answerApi, success: function(result) {
     var answerLength = result.length;
-    console.log(result);
 
     //  need to access username from answerOwner
 
@@ -42,8 +39,7 @@ function getAnswers() {
       var $answerID = result[i].id;
       var $answerOwner = result[i].user;
       if ($answerQuestionID == $last_segment) {
-          console.log($answerQuestionID);
-          $('div.block').append('<div class=answer id=' + $answerID + '>' + $answerOwner + " said: " + '<br>' + $answerText + "</div>");
+          $('div.answer_block').append('<div class=answer id=' + $answerID + '>' + $answerOwner + " said: " + '<br>' + $answerText + "</div>");
         }
       };
     }
