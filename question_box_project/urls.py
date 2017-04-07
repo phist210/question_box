@@ -47,8 +47,8 @@ urlpatterns = [
         kwargs={'next_page': '/'},
         name='logout'
     ),
-    url(r'^ask/', views.index, name='ask'),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^answer/$', views.question, name="answer"),
     url(r'^', include('question_box_app.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
