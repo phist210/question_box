@@ -9,9 +9,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):  # might be useful to list answers for respective question, it might not be
+
+    #  possibly set a serializer for related objects (answers, "foreign key related field")
+
     class Meta:
         model = Question
-        fields = ('title', 'text', 'user', 'created')
+        fields = ('title', 'text', 'user', 'created', 'id', 'answer_set')  # answer_set to view answers
 
 
 class AnswerSerializer(serializers.ModelSerializer):

@@ -1,6 +1,13 @@
 {% extends 'question_box_app/base.html' %}
+{% block extra_head %}
+{% load staticfiles %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<title>Signup</title>
+{% endblock %}
 
 {% block content %}
+{% include 'question_box_app/header.html' %}
+<div class='container'>
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
@@ -18,4 +25,5 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'question_box_app/base.html' %}
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/base.css' %}?v=00002" rel="stylesheet">
 <title>{{question.title}}</title>
 {% endblock %}
 
@@ -10,7 +10,13 @@
 
 <div class='container'>
 
-    {{user}}: {{question.title}}
+    <div class='question_block'>
+      <h3>{{question.title}}</h3>
+      <p>{{question.text}}</p>
+      Posted by: {{question.user.username}}</br>
+      {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
+
+    </div>
 
     <div class='block'>
     </div>
@@ -19,6 +25,8 @@
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
+      <input name="question_id" value="{{question.id}}" style="display:none"/>
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
       <input id="submit" type='submit' value='Submit'/>
   </form>
   </div>

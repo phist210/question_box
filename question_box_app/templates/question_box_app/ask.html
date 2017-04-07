@@ -12,6 +12,7 @@
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
       <input id="submit" type='submit' value='Submit'/>
   </form>
   </div>
@@ -19,5 +20,5 @@
 {% endblock %}
 
 {% block javascript %}
-<script type="text/javascript" src="{% static 'js/askq.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/askq.js' %}?v=00002"></script>
 {% endblock %}
