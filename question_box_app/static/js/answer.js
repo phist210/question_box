@@ -1,6 +1,6 @@
 
 // AJAX for answering
-$('#submit').click(function(event) {
+$('#submit_answer').click(function(event) {
     console.log($('form').serializeArray());
     event.preventDefault();
     var $info = $('#a_form :input');
