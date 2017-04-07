@@ -21,13 +21,21 @@
     <div class='block'>
     </div>
 
+  <div id="qcomment_form">
+      <form method='POST'>
+          {% csrf_token %}
+          {{ form.as_p }}
+      <input id="submit_qcomment" type='submit' value='Submit Comment'/>
+  </form>
+  </div>
+
   <div id="a_form">
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
       <input name="question_id" value="{{question.id}}" style="display:none"/>
       <input name="user_id" value="{{user.id}}" style="display:none"/>
-      <input id="submit" type='submit' value='Submit'/>
+      <input id="submit_answer" type='submit' value='Submit Answer'/>
   </form>
   </div>
 
