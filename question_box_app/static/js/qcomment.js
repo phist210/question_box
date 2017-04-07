@@ -16,10 +16,11 @@ $('#submit_qcomment').click(function(event) {
     }
     $.ajax({
         type:'POST',
-        url: '/api/answer/',
+        url: '/api/commentquestion/',
         data: $form,
         success: function(result) {
             alert("Comment added!");
+            console.log($form);
             window.location.href = "#";
         }
     })
