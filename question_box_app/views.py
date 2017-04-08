@@ -14,6 +14,10 @@ def index(request):
     return render(request, 'question_box_app/index.html')
 
 
+def profile(request):
+    return render(request, 'question_box_app/profile.html')
+
+
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
     answers = question.answer_set.filter(question_id=question_id)
