@@ -6,7 +6,7 @@ from .models import Question, Answer, QuestionComment, AnswerComment
 class AskQuestion(ModelForm):
     class Meta:
         model = Question
-        fields = ['title', 'text', 'tags']
+        fields = ['title', 'text']
 
 
 class AnswerQuestion(ModelForm):
