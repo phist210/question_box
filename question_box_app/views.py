@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 from .forms import *
+from .vote_tally import *
 
 
 # Create your views here.
@@ -60,6 +61,23 @@ def signup(request):
 
 def ask(request):
     return render(request, 'question_box_app/ask.html', {'form': AskQuestion})
+
+def q_upvote(request, user_id, question_id):
+    qv = QuestionVote(user=user_id, question=question_id, score=1)
+    qv.save()
+    return render(request, "question_box_app/q_vote.html", context)
+
+def q_downvote(request, user_id, question_id):
+    qv = QuestionVote(user=user_id, question=question_id, score=(-1))
+    qv.save()
+    return render(request, "question_box_app/q_vote.html", context)
+
+def display_q_vote_total(request, question_id):
+    q_vote_total = [q.score for q in QuestionVote.objects.filter(quest=question_id)]
+    results = count_results(q_vote_total)
+    score_num = score(results)
+    context = {'score': score_num}
+    return render(request, "question_box_app/q_vote.html", context)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
