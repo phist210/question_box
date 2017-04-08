@@ -62,7 +62,7 @@ def signup(request):
 def ask(request):
     return render(request, 'question_box_app/ask.html', {'form': AskQuestion})
 
-<<<<<<< HEAD
+
 def q_upvote(request, user_id, question_id):
     qv = QuestionVote(user=user_id, question=question_id, score=1)
     qv.save()
@@ -73,14 +73,14 @@ def q_downvote(request, user_id, question_id):
     qv.save()
     return render(request, "question_box_app/q_vote.html", context)
 
-def display_q_vote_total(request, question_id):
-    q_vote_total = [q.score for q in QuestionVote.objects.filter(quest=question_id)]
+def display_q_vote_total(request, question_id=1):
+    q_vote_total = [q.score for q in QuestionVote.objects.filter(question=question_id)]
     results = count_results(q_vote_total)
-    score_num = score(results)
+    score_num = score(results[0], results[1])
     context = {'score': score_num}
     return render(request, "question_box_app/q_vote.html", context)
 
-=======
+
 def q_upvote(request, user_id, answer_id):
     # make a new instance of the vote
     qv = QuestionVote(user=user_id, answer=answer_id, score=1)
@@ -89,7 +89,7 @@ def q_upvote(request, user_id, answer_id):
 
 
     return render(request, 'question_box_app/vote.html', context)
->>>>>>> master
+
 
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all().order_by('created')

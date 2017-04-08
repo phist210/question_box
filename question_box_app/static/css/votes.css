@@ -1,0 +1,17 @@
+/* css file for voting divs*/
+
+#vote_area {
+    font-size: 36pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+}
+
+#vote_area:img {
+    padding: 20px 20px 20px 20px;
+}
+
+#vote_total {
+    padding: 12px 12px 12px 12px;
+
+}
