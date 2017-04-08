@@ -61,6 +61,14 @@ def signup(request):
 def ask(request):
     return render(request, 'question_box_app/ask.html', {'form': AskQuestion})
 
+def q_upvote(request, user_id, answer_id):
+    # make a new instance of the vote
+    qv = QuestionVote(user=user_id, answer=answer_id, score=1)
+    return redirect()
+
+
+
+    return render(request, 'question_box_app/vote.html', context)
 
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all().order_by('created')
