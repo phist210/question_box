@@ -1,7 +1,6 @@
 //form to make a comment via ajax
 
 $('#submit_qcomment').click(function(event) {
-    console.log($('form').serializeArray());
     event.preventDefault();
     var $info = $('#qcomment_form :input');
     var $text = $info[1].value;
@@ -20,8 +19,32 @@ $('#submit_qcomment').click(function(event) {
         data: $form,
         success: function(result) {
             alert("Comment added!");
-            console.log($form);
             window.location.href = "#";
         }
     })
 });
+
+function getQuestionComments() {
+  var $questionCommentApi = "/api/commentquestion/";
+  var $full_url = document.URL; // Get current url
+  var $url_array = $full_url.split('/'); // Split the string into an array with / as separator
+  var $last_segment = $url_array[$url_array.length-1];  // Get the last part of the array (-1)
+  $.ajax({url: $questionCommentApi, success: function(result) {
+    var questionCommentLength = result.length;
+
+    //  need to access username from questionCommentOwner
+
+    for(var i = 0; i < questionCommentLength; i++) {
+      var $questionCommentQuestionID = result[i].question;
+      var $questionCommentText = result[i].text;
+      var $questionCommentID = result[i].id;
+      var $questionCommentOwner = result[i].user;
+      if ($questionCommentQuestionID == $last_segment) {
+          $('div.commentblock').append('<div class=question_comment id=' + $questionCommentID + '>' + $questionCommentOwner + " said: " + '<br>' + $questionCommentText + '</br>' + "</div>");
+        }
+      };
+    }
+  });
+}
+
+getQuestionComments();

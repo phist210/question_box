@@ -8,17 +8,6 @@ p{
   text-indent: 10px;
 }
 
-.answer{
-  border:1px solid black;
-  padding: 10px;
-  margin: 10px;
-}
-
-.question_block{
-  border-bottom: 1px solid black;
-  padding: 10px;
-}
-
 .container{
   width: 60%;
   margin: 0 auto;
@@ -26,6 +15,11 @@ p{
   border-top: 1px solid black;
   padding: 10px;
   background-color: white;
+}
+
+.question_block{
+  border-bottom: 1px solid black;
+  padding: 10px;
 }
 
 .question{
@@ -41,8 +35,25 @@ p{
   border: 1px solid black;
 }
 
+.commentblock{
+  margin: 0 auto;
+  width:60%;
+}
+
 .answer_block{
   margin: 0 auto;
-  width: 70%;
+  margin-top: 10px;
+  width: 90%;
   border: 1px solid black;
+}
+
+.answer{
+  border:1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.answer_comment{
+  text-indent: 20px;
+  font-size: 10px;
 }
