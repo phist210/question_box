@@ -14,13 +14,13 @@ class QuestionSerializer(serializers.ModelSerializer):  # might be useful to lis
 
     class Meta:
         model = Question
-        fields = ('title', 'text', 'user', 'created', 'id', 'answer_set')  # answer_set to view answers
+        fields = ('title', 'text', 'user', 'created', 'id', 'answer_set', 'questioncomment_set')  # answer_set to view answers
 
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ('text', 'question', 'user', 'created',)
+        fields = ('id', 'text', 'question', 'user', 'created', 'answercomment_set')
 
 
 class QuestionCommentSerializer(serializers.ModelSerializer):
@@ -32,7 +32,7 @@ class QuestionCommentSerializer(serializers.ModelSerializer):
 class AnswerCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnswerComment
-        fields = ('text', 'answer', 'user', 'created')
+        fields = ('id', 'text', 'answer', 'user', 'created')
 
 
 class QuestionVoteSerializer(serializers.ModelSerializer):

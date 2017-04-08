@@ -1,7 +1,7 @@
 {% extends 'question_box_app/base.html' %}
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/base.css' %}?v=00002" rel="stylesheet">
+<link href="{% static 'css/base.css' %}?v=00003" rel="stylesheet">
 <title>Question Box: {{question.title}}</title>
 {% endblock %}
 
@@ -13,15 +13,30 @@
     <div class='question_block'>
       <h3>{{question.title}}</h3>
       <p>{{question.text}}</p>
-      Posted by: {{question.user.username}}</br>
+      <p style='text-align: right'>Posted by: {{question.user.username}}</p></br>
       {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
-
+      <h4>Comments:</h4>
+        <div class='commentblock'>
+        </div>
     </div>
 
-    <div class='block'>
+    <div class='answer_block'>
     </div>
+
+
+  <div id="acomment_form">
+    <h2>Comment on an Answer</h2>
+    <form method="POST">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <input name="answer_id" value="{{answer.id}}" style="display:none"/>
+       <input name="user_id" value="{{user.id}}" style="display:none"/>
+     <input type="submit" id="submit_acomment" value="Submit Comment"/>
+    </form>
+  </div>
 
   <div id="qcomment_form">
+    <h2>Comment on an Question</h2>
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
@@ -32,6 +47,7 @@
   </div>
 
   <div id="a_form">
+    <h2>Post an Answer</h2>
       <form method='POST'>
           {% csrf_token %}
           {{ form.as_p }}
@@ -46,5 +62,6 @@
 {% endblock %}
 {% block javascript %}
 <script src="{% static 'js/answer.js' %}"></script>
+<script src="{% static 'js/anscomment.js' %}"></script>
 <script src="{% static 'js/qcomment.js' %}"></script>
 {% endblock %}
