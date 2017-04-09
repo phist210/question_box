@@ -15,8 +15,7 @@ $('#plus_vote').click(function(event) {
         url: '/api/votequestion/',
         data: $form,
         success: function(result) {
-            alert("You Voted");
-            window.location.href = '/';
+            window.location.href = '';
         }
     })
 });
@@ -35,8 +34,7 @@ $('#minus_vote').click(function(event) {
         url: '/api/votequestion/',
         data: $form,
         success: function(result) {
-            alert("You Voted");
-            window.location.href = '/';
+            window.location.href = '';
         }
     })
 });

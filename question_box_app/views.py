@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import AskQuestion
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
@@ -26,7 +25,10 @@ def profile(request):
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
     answers = question.answer_set.filter(question_id=question_id)
-    return render(request, 'question_box_app/question.html', {'question': question, 'form': AnswerQuestion, 'answers': answers})
+    q_votes = q_vote_total(question_id)
+    ans_votes = ans_vote_total(question_id)
+    context = {'question': question, 'form': AnswerQuestion, 'answers': answers, 'q_score': q_votes, "ans_score": ans_votes}
+    return render(request, 'question_box_app/question.html', context)
 
 
 def ans_comment(request, question_id=1):
@@ -47,53 +49,9 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-#
-# def answer(request):
-#     # if this is a POST request we need to process the form data
-#     if request.method == 'POST':
-#         # create a form instance and populate it with data from the request:
-#         form = AnswerQuestion(request.POST)
-#         # check whether it's valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required
-#             # ...
-#             # redirect to a new URL:
-#             return HttpResponseRedirect('/api/answer/')
-#
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = AnswerQuestion()
-#
-#     return render(request, 'question_box_app/answer.html', {'form': form})
-#
 
 def ask(request):
     return render(request, 'question_box_app/ask.html', {'form': AskQuestion})
-
-
-def q_upvote(request, user_id, question_id):
-    qv = QuestionVote(user=user_id, question=question_id, score=1)
-    qv.save()
-    return render(request, "question_box_app/q_vote.html", context)
-
-def q_downvote(request, user_id, question_id):
-    qv = QuestionVote(user=user_id, question=question_id, score=(-1))
-    qv.save()
-    return render(request, "question_box_app/q_vote.html", context)
-
-def q_vote_total(request, question_id=1):
-    q_vote_total = [q.score for q in QuestionVote.objects.filter(question=question_id)]
-    results = count_results(q_vote_total)
-    score_num = score(results[0], results[1])
-    context = {'score': score_num}
-    return render(request, "question_box_app/q_vote.html", context)
-
-
-def ans_vote_total(request, answer_id=1):
-    ans_vote_total = [ans.score for ans in AnswerVote.objects.filter(answer=answer_id)]
-    results = count_results(ans_vote_total)
-    score_num = score(results[0], results[1])
-    return render(request, 'question_box_app/ans_vote.html', {'score': score_num})
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
