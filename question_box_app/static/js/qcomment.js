@@ -1,9 +1,9 @@
 //form to make a comment via ajax
 
 $( function(){
-    $('.question_comment_form').on('click', function(e){
+    $('.question_comment_link').on('click', function(e){
         e.preventDefault();
-        $(this).next('.question-comment-link').show();
+        $(this).next('.question_comment_form').show();
     });
 });
 

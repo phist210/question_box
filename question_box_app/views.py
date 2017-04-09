@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import AskQuestion
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
@@ -20,8 +19,7 @@ def profile(request):
 
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
-    answers = question.answer_set.filter(question_id=question_id)
-    return render(request, 'question_box_app/question.html', {'question': question, 'form': AnswerQuestion, 'answers': answers})
+    return render(request, 'question_box_app/question.html', {'form': AnswerQuestion, 'question': question})
 
 
 def ans_comment(request, question_id=1):

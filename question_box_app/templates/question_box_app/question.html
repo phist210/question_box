@@ -1,7 +1,7 @@
 {% extends 'question_box_app/base.html' %}
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/base.css' %}?v=9" rel="stylesheet">
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
 <title>Question Box: {{question.title}}</title>
 {% endblock %}
 
@@ -17,8 +17,8 @@
       {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
 
         <div class='comment_block'>
-          <a href='' class='question_comment_form' id='{{question.id}}'>Comment on question</a>
-          <div class='question-comment-link' id="qcomment_form">
+          <a href='' class='question_comment_link' id='{{question.id}}'>Comment on question</a>
+          <div class='question_comment_form' id="qcomment_form">
             <form method='POST'>
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -31,15 +31,17 @@
     </div>
 
     <div class='answer_block'>
-        <div class='answer-comment-link' id="acomment_form">
-          <form method="POST">
-             {% csrf_token %}
-             {{ form.as_p }}
-             <input name="answer_id" value="1" style="display:none"/>
-             <input name="user_id" value="{{user.id}}" style="display:none"/>
-           <input type="submit" id="submit_acomment" value="Submit Comment"/>
-          </form>
-        </div>
+
+      <div class="ans_comment_form" id="acomment_form">
+       <form method="POST">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input name="answer_id" value='{{question.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
+         <input name="user_id" value='{{user.id}}' style="display:none"/>
+         <input type="submit" id="submit_acomment" value="Submit Comment"/>
+        </form>
+      </div>
+
     </div>
 
     <div id="a_form">
@@ -57,7 +59,7 @@
 
 {% endblock %}
 {% block javascript %}
-<script src="{% static 'js/answer.js' %}?v=9"></script>
-<script src="{% static 'js/qcomment.js' %}?v=9"></script>
+<script src="{% static 'js/answer.js' %}"></script>
+<script src="{% static 'js/qcomment.js' %}"></script>
 <!-- <script src="{% static 'js/anscomment.js' %}?v=9"></script> -->
 {% endblock %}
