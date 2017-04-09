@@ -1,6 +1,6 @@
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/header.css' %}?v=00002" rel="stylesheet">
+<link href="{% static 'css/header.css' %}?v=9" rel="stylesheet">
 <title>Question Box</title>
 {% endblock %}
 
@@ -18,7 +18,7 @@
       {% if user.is_authenticated %}
       <li style='float: right'><a id='logout' href='/logout'>Logout</a></li>
       <li style='float: right'><a target='_blank' href="/ask">?</a></li>
-      <li style='float: right'><a href="/account" >Welcome, {{user}}</a></li>
+      <li style='float: right'><a href="/profile" >Welcome, {{user}}</a></li>
 
       {% else %}
       <li style='float: right'><a id='login' href='/login'>Login</a></li>

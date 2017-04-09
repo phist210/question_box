@@ -4,8 +4,30 @@ body{
   font-weight: 100;
 }
 
+a:active, a, a:visited{
+  color: orange;
+  text-decoration: none;
+}
+
+a:hover{
+  color: blue;
+}
+
 p{
   text-indent: 10px;
+}
+
+#a_form{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.answer-comment-link{
+  display: none;
+}
+
+.question-comment-link{
+  display: none;
 }
 
 .container{
@@ -35,7 +57,7 @@ p{
   border: 1px solid black;
 }
 
-.commentblock{
+.comment_block{
   margin: 0 auto;
   width:60%;
 }

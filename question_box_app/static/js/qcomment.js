@@ -1,10 +1,17 @@
 //form to make a comment via ajax
 
+$( function(){
+    $('.question_comment_form').on('click', function(e){
+        e.preventDefault();
+        $(this).next('.question-comment-link').show();
+    });
+});
+
 $('#submit_qcomment').click(function(event) {
     event.preventDefault();
     var $info = $('#qcomment_form :input');
     var $text = $info[1].value;
-    var $questionid = $info[2].value;
+    var $questionid = Number($info[2].value);
     var $user = Number($info[3].value);
     var $form = {
         "text": $text,
@@ -40,7 +47,7 @@ function getQuestionComments() {
       var $questionCommentID = result[i].id;
       var $questionCommentOwner = result[i].user;
       if ($questionCommentQuestionID == $last_segment) {
-          $('div.commentblock').append('<div class=question_comment id=' + $questionCommentID + '>' + $questionCommentOwner + " said: " + '<br>' + $questionCommentText + '</br>' + "</div>");
+          $('div.comment_block').append('<div class=question_comment id=' + $questionCommentID + '>' + $questionCommentOwner + " said: " + '<br>' + $questionCommentText + '</br>' + "</div>");
         }
       };
     }

@@ -1,7 +1,7 @@
 {% extends 'question_box_app/base.html' %}
 {% block extra_head %}
 {% load staticfiles %}
-<link href="{% static 'css/base.css' %}?v=00003" rel="stylesheet">
+<link href="{% static 'css/base.css' %}?v=9" rel="stylesheet">
 <title>Question Box: {{question.title}}</title>
 {% endblock %}
 
@@ -13,38 +13,35 @@
     <div class='question_block'>
       <h3>{{question.title}}</h3>
       <p>{{question.text}}</p>
-      <p style='text-align: right'>Posted by: {{question.user.username}}</p></br>
+      <p style='text-align: right;'>Posted by: {{question.user.username}}</p></br>
       {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
-      <h4>Comments:</h4>
-        <div class='commentblock'>
+
+        <div class='comment_block'>
+          <a href='#' class='question_comment_form' id='{{question.id}}'>Comment on question</a>
+          <div class='question-comment-link' id="qcomment_form">
+            <form method='POST'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input name="question_id" value="{{question.id}}" style="display:none"/>
+                <input name="user_id" value="{{user.id}}" style="display:none"/>
+                <input id="submit_qcomment" type='submit' value='Submit Comment'/>
+            </form>
+          </div>
         </div>
     </div>
 
     <div class='answer_block'>
+        <a href='#' class='answer_comment_form' id="1">Reply to answer</a>
+        <div class='answer-comment-link' id="acomment_form">
+          <form method="POST">
+             {% csrf_token %}
+             {{ form.as_p }}
+             <input name="answer_id" value=1 style="display:none"/>
+             <input name="user_id" value="{{user.id}}" style="display:none"/>
+           <input type="submit" id="submit_acomment" value="Submit Comment"/>
+          </form>
+        </div>
     </div>
-
-
-  <div id="acomment_form">
-    <h2>Comment on an Answer</h2>
-    <form method="POST">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <input name="answer_id" value="{{answer.id}}" style="display:none"/>
-       <input name="user_id" value="{{user.id}}" style="display:none"/>
-     <input type="submit" id="submit_acomment" value="Submit Comment"/>
-    </form>
-  </div>
-
-  <div id="qcomment_form">
-    <h2>Comment on an Question</h2>
-      <form method='POST'>
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input name="question_id" value="{{question.id}}" style="display:none"/>
-          <input name="user_id" value="{{user.id}}" style="display:none"/>
-          <input id="submit_qcomment" type='submit' value='Submit Comment'/>
-      </form>
-  </div>
 
   <div id="a_form">
     <h2>Post an Answer</h2>
@@ -61,7 +58,7 @@
 
 {% endblock %}
 {% block javascript %}
-<script src="{% static 'js/answer.js' %}"></script>
-<script src="{% static 'js/anscomment.js' %}"></script>
-<script src="{% static 'js/qcomment.js' %}"></script>
+<script src="{% static 'js/answer.js' %}?v=9"></script>
+<script src="{% static 'js/qcomment.js' %}?v=9"></script>
+<script src="{% static 'js/anscomment.js' %}?v=9"></script>
 {% endblock %}
