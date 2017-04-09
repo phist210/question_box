@@ -26,6 +26,10 @@ p{
   display: none;
 }
 
+.answer-comment-show{
+  display: show;
+}
+
 .question-comment-link{
   display: none;
 }

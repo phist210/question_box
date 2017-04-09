@@ -25,8 +25,8 @@ $('#submit_qcomment').click(function(event) {
         url: '/api/commentquestion/',
         data: $form,
         success: function(result) {
-            alert("Comment added!");
-            window.location.href = "#";
+            window.location.href = "";
+            getQuestionComments();
         }
     })
 });
