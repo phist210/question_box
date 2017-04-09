@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import AskQuestion
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
 from rest_framework import viewsets
 from .models import *
 from .serializers import *

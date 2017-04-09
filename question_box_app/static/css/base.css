@@ -22,15 +22,11 @@ p{
   margin: 0 auto;
 }
 
-.answer-comment-link{
+.ans_comment_form{
   display: none;
 }
 
-.answer-comment-show{
-  display: show;
-}
-
-.question-comment-link{
+.question_comment_form{
   display: none;
 }
 
@@ -80,6 +76,7 @@ p{
 }
 
 .answer_comment{
-  text-indent: 20px;
   font-size: 10px;
+  width: 50%;
+  margin: 0 auto;
 }

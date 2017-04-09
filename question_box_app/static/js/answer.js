@@ -23,8 +23,7 @@ $('#submit_acomment').click( function(event) {
         url: "/api/commentanswer/",
         data: $form,
         success: function(result) {
-            alert("commented!");
-            window.location.href = '#';
+            window.location.href = '';
             getAnswerComments();
         }
     });
@@ -46,23 +45,12 @@ function getAnswerComments() {
       var $answerCommentID = result[i].id;
       var $answerCommentOwner = result[i].user;
       if ($answerCommentAnswerID == $answerCommentAnswerID) {
-          $('#' + $answerCommentAnswerID + '.answer').append('<div class=answer_comment id=' + $answerCommentID + '>' + $answerCommentOwner + " commented: " + '</br>' + $answerCommentText + '</br>' + "<a href='' class=answer_comment_form id=1>Reply</a>" + "</div>");
+          $('#' + $answerCommentAnswerID + '.answer').append('<div class=answer_comment id=' + $answerCommentID + '>' + $answerCommentOwner + " commented: " + '</br>' + $answerCommentText + "</div>");
+          };
         }
       }
-    }
   });
 }
-
-// "reply" click link for answer comment form
-
-$( function(){
-    $('.answer_comment_form').on('click', function(e){
-        e.preventDefault();
-        console.log('a');
-        $(this).next('.answer-comment-link').show();
-        // $('#acomment_form').removeClass('answer-comment-link').addClass('answer-comment-show');
-    });
-});
 
 // get answer function
 
@@ -106,12 +94,19 @@ function getAnswers() {
       var $answerText = result[i].text;
       var $answerID = result[i].id;
       var $answerOwner = result[i].user;
+      var $comment_form = $('.ans_comment_form');
       if ($answerQuestionID == $last_segment) {
-          $('div.answer_block').append('<div class=answer id=' + $answerID + '>' + $answerOwner + " said: " + '<br>' + $answerText + "</div>");
+          $('div.answer_block').append('<div class=answer id=' + $answerID + '>' + $answerOwner + " said: " + '<br>' + $answerText + '</br>' + "<a class=answer_comment_link>" + "Comment" + "</a>" + "</div>");
+          $('.answer').append($comment_form);
         }
       }
       getAnswerComments();
-
+      $( function(){
+          $('.answer_comment_link').on('click', function(e){
+              e.preventDefault();
+              $(this).next('.ans_comment_form').show();
+          });
+      });
     }
   });
 }
