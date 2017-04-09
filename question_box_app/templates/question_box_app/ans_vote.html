@@ -8,7 +8,7 @@
 <div id="vote_form">
     <form method="POST">
       {% csrf_token %}
-      <input name="question_id" value="{{Answer.id}}" style="display:none"/>
+      <input name="ans_id" value="{{answer.id}}" style="display:none"/>
       <input name="user_id" value="{{user.id}}" style="display:none"/>
       <div id="vote_area">
         <div id="plus_vote">
