@@ -2,13 +2,27 @@
 {% block extra_head %}
 {% load staticfiles %}
 <link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 {% include 'question_box_app/header.html' %}
 
 <div class='container'>
-  <div class='block'>
+  <h1>Welcome To Your Profile!</h1>
+  <br><br><br>
+  <h2><em>Here are your contributions!</em></h2>
+  <h3>Questions you've asked:</h3>
+  <div class='myquestion_block'>
+      {% for question in questionlist %}
+        <div>{{question}}</div><br>
+      {% endfor %}
+  </div>
+  <h3>Answers you've subitted:</h3>
+  <div class='myanswer_block'>
+      {% for answer in answerlist %}
+        <div>{{answer}}</div><br>
+      {% endfor %}
   </div>
 </div>
 
