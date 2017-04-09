@@ -1,5 +1,6 @@
 # file for calculating scores
 
+
 def count_results(total_votes_list):
     up = 0
     down = 0
@@ -11,8 +12,8 @@ def count_results(total_votes_list):
         else:
             raise ValueError
 
-    return up, down
+    return (up, down)
 
 
 def score(upvotes, downvotes):
-    return upvotes + downvotes
+    return upvotes - downvotes

@@ -1,20 +1,33 @@
+{% extends 'question_box_app/base.html' %}
 {% load staticfiles %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/votes.css' %}"/>
 {% endblock %}
+
 {% block content %}
-<div id="vote_area">
-    <div id="plus_vote">
-    <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
+<div id="vote_form">
+    <form method="POST">
+      {% csrf_token %}
+      <input name="question_id" value="{{question.id}}" style="display:none"/>
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
+      <div id="vote_area">
+        <div id="plus_vote">
+          <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
+        </div>
+      <div id="vote_total">
+        {{ score }}
+      </div>
+        <div id="minus_vote">
+          <img src="{% static 'images/minus-sign.png' %}" alt="Down Vote"/>
+      </div>
+     </div>
+    </form>
+ </div>
+
+
 </div>
-<div id="vote_total">
-    {{ score }}
-</div>
-    <div id="minus_vote">
-    <img src="{% static 'images/minus-sign.png' %}" alt="Down Vote"/>
-</div>
-</div>
-{% block javascript %}
-<script type="text/javascript" src="{% static 'js/votes.js' %}"></script>
 {% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/q_vote.js' %}"></script>
 {% endblock %}
