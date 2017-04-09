@@ -11,6 +11,7 @@
 <div class='container'>
 
     <div class='question_block'>
+        {% include 'question_box_app/q_vote.html' %}
       <h3>{{question.title}}</h3>
       <p>{{question.text}}</p>
       <p style='text-align: right;'>Posted by: {{question.user.username}}</p></br>
