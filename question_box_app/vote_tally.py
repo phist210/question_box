@@ -1,17 +1,18 @@
 # file for calculating scores
 from .models import *
 
-def count_results(total_votes_list):
+
+def count_results(total_votes):
     up = 0
     down = 0
-    for vote in total_votes_list:
-        if vote == 1:
+    print([v for v in total_votes])
+    for v in total_votes:
+        if v == 1:
             up += 1
-        elif vote == -1:
+        elif v == -1:
             down += 1
         else:
-            raise ValueError
-
+            raise ValueError("ERROR")
     return (up, down)
 
 
@@ -28,7 +29,8 @@ def q_vote_total(question_id):
 
 def ans_vote_total(question_id, answer_id):
     all_ans = [ans for ans in Answer.objects.filter(question=question_id)]
-    ans_vote_total = [ans.score for ans in all_ans if ans.question.id == question_id]
-    results = count_results(ans_vote_total)
+    all_scores = [ans.score for ans in AnswerVote.objects.filter(answer=answer_id)]
+    ans_score_pairs = zip(all_ans, all_scores)
+    results = count_results(all_scores)
     score_num = score(results[0], results[1])
     return score_num

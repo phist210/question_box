@@ -24,10 +24,12 @@ def profile(request):
 
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
-    answers = question.answer_set.filter(question_id=question_id)
+    answers_list = [ans.id for ans in Answer.objects.filter(question=question_id)]
     q_votes = q_vote_total(question_id)
-    ans_votes_list = ans_vote_total(question_id, answer_id)
-    context = {'question': question, 'form': AnswerQuestion, 'answers': answers, 'q_score': q_votes, "ans_score": ans_votes}
+    ans_votes_list = []
+    for ans in answers_list:
+        ans_votes_list.append(ans_vote_total(question_id, ans))
+    context = {'question': question, 'form': AnswerQuestion, 'q_score': q_votes, "ans_score_list": ans_votes_list}
     return render(request, 'question_box_app/question.html', context)
 
 

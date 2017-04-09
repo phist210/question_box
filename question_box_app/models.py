@@ -61,10 +61,6 @@ class AnswerVote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
-
-
-
-
 class Tag(models.Model):
     text = models.TextField(max_length=10)
     question = models.ManyToManyField(Question)
