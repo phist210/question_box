@@ -9,14 +9,24 @@
 {% include 'question_box_app/header.html' %}
 
 <div class='container'>
-
+  <div class='row'>
+    <div class='two columns'>
+        <div id='votes_temp'>
+          {% include 'question_box_app/q_vote.html' %}
+        </div>
+    </div>
+    <div class='ten columns'>
     <div class='question_block'>
-        {% include 'question_box_app/q_vote.html' %}
       <h3>{{question.title}}</h3>
       <p>{{question.text}}</p>
       <p style='text-align: right;'>Posted by: {{question.user.username}}</p></br>
       {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
-
+  </div>
+  </div>
+  </div>
+  <div class="row">
+      <div class="two columns"></div>
+      <div class="ten columns">
         <div class='comment_block'>
           <a href='' class='question_comment_link' id='{{question.id}}'>Comment on question</a>
           <div class='question_comment_form' id="qcomment_form">
@@ -27,24 +37,33 @@
                 <input name="user_id" value="{{user.id}}" style="display:none"/>
                 <input id="submit_qcomment" type='submit' value='Submit Comment'/>
             </form>
+            <p> in q div </p>
           </div>
         </div>
     </div>
+  </div>
 
-    <div class='answer_block'>
-
-      <div class="ans_comment_form" id="acomment_form">
-       <form method="POST">
-         {% csrf_token %}
-         {{ form.as_p }}
-         <input name="answer_id" value='{{question.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
-         <input name="user_id" value='{{user.id}}' style="display:none"/>
-         <input type="submit" id="submit_acomment" value="Submit Comment"/>
-        </form>
+  <div class="row">
+      <div class="two columns">
+          {% include 'question_box_app/ans_vote.html' %}
       </div>
-
+      <div class="ten columns">
+        <div class='answer_block'>
+          <div class="ans_comment_form" id="acomment_form">
+            <form method="POST">
+             {% csrf_token %}
+             {{ form.as_p }}
+            <input name="answer_id" value='{{question.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
+            <input name="user_id" value='{{user.id}}' style="display:none"/>
+            <input type="submit" id="submit_acomment" value="Submit Comment"/>
+           </form>
+      </div>
     </div>
-
+</div>
+</div>
+<div class="row">
+    <div class="two columns"></div>
+    <div class="ten columns">
     <div id="a_form">
       <h2>Post an Answer</h2>
         <form method='POST'>
@@ -55,7 +74,8 @@
             <input id="submit_answer" type='submit' value='Submit Answer'/>
         </form>
     </div>
-
+</div>
+</div>
 </div>
 
 {% endblock %}

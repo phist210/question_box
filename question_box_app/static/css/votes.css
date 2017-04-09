@@ -5,10 +5,7 @@
     font-weight: bold;
     text-align: center;
     padding: 20px 20px 20px 20px;
-}
-
-#vote_area:img {
-    padding: 20px 20px 20px 20px;
+    float: left;
 }
 
 #vote_total {
