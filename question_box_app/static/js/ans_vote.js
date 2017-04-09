@@ -11,6 +11,7 @@ $('#plus_vote').click(function(event) {
         "user":  $('[name="user_id"]').val(),
         "answer": $('[name="ans_id"]').val(),
         "score": 1,
+        "question": $('name="q_id"]').val(),
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
 

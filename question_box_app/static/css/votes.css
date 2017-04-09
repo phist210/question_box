@@ -2,13 +2,6 @@
 
 #vote_area {
     font-size: 36pt;
-    font-weight: bold;
     text-align: center;
-    padding: 20px 20px 20px 20px;
     float: left;
-}
-
-#vote_total {
-    padding: 12px 12px 12px 12px;
-
 }

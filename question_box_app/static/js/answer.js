@@ -105,6 +105,7 @@ function getAnswers() {
       var $answerID = result[i].id;
       var $answerOwner = result[i].user;
       var $comment_form = $('.ans_comment_form');
+      console.log(result);
       if ($answerQuestionID == $last_segment) {
           $('div.answer_block').append('<div class=answer id=' + $answerID + '>' + $answerOwner + " said: " + '<br>' + $answerText + '</br>' + "<a class=answer_comment_link>" + "Comment" + "</a>" + "</div>");
           $('.answer').append($comment_form);

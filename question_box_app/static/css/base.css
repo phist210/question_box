@@ -31,7 +31,6 @@ p{
 }
 
 .container{
-  width: 60%;
   margin: 0 auto;
   margin-top: 10px;
   border-top: 1px solid black;
@@ -40,7 +39,6 @@ p{
 }
 
 .question_block{
-  border-bottom: 1px solid black;
   padding: 10px;
   float: left;
 }
@@ -66,7 +64,6 @@ p{
 .answer_block{
   margin: 0 auto;
   margin-top: 10px;
-  width: 90%;
   border: 1px solid black;
 }
 
@@ -80,4 +77,10 @@ p{
   font-size: 10px;
   width: 50%;
   margin: 0 auto;
+}
+
+.row-styles {
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

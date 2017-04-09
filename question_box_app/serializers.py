@@ -44,7 +44,7 @@ class QuestionVoteSerializer(serializers.ModelSerializer):
 class AnswerVoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnswerVote
-        fields = ('score', 'answer', 'user')
+        fields = ('score', 'answer', 'user', 'question')
 
 
 class TagSerializer(serializers.ModelSerializer):

@@ -26,7 +26,7 @@ def question(request, question_id):
     question = Question.objects.get(pk=question_id)
     answers = question.answer_set.filter(question_id=question_id)
     q_votes = q_vote_total(question_id)
-    ans_votes = ans_vote_total(question_id)
+    ans_votes_list = ans_vote_total(question_id, answer_id)
     context = {'question': question, 'form': AnswerQuestion, 'answers': answers, 'q_score': q_votes, "ans_score": ans_votes}
     return render(request, 'question_box_app/question.html', context)
 
