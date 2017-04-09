@@ -10,7 +10,7 @@
       {% csrf_token %}
       <input name="ans_id" value="{{answer.id}}" style="display:none"/>
       <input name="user_id" value="{{user.id}}" style="display:none"/>
-      <input name="q_id" value="{{question.id}}" stlye="display:none"/>
+      <input name="q_id" value="{{question.id}}" style="display:none"/>
       {% for ans in ans_score_list %}
       <div id="vote_area">
         <div id="plus_vote">
