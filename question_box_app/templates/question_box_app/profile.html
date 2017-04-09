@@ -10,26 +10,19 @@
 
 <div class='container'>
   <h1>Welcome To Your Profile!</h1>
-  <h2>Here are your contributions!</h2>
-  <p><h3>Questions you've asked:</h3></p>
+  <br><br><br>
+  <h2><em>Here are your contributions!</em></h2>
+  <h3>Questions you've asked:</h3>
   <div class='myquestion_block'>
-    <ul>
       {% for question in questionlist %}
-        <li>
-          {{question}}
-        </li><br>
+        <div>{{question}}</div><br>
       {% endfor %}
-    </ul>
   </div>
-  <p><h3>Answers you've subitted:</h3></p>
+  <h3>Answers you've subitted:</h3>
   <div class='myanswer_block'>
-    <ul>
       {% for answer in answerlist %}
-        <li>
-          {{answer}}
-        </li><br>
+        <div>{{answer}}</div><br>
       {% endfor %}
-    </ul>
   </div>
 </div>
 
@@ -37,5 +30,4 @@
 
 {% block javascript %}
 
-<script src="{% static 'js/profile.js' %}?v=9"></script>
 {% endblock %}
