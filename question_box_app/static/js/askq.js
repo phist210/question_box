@@ -2,7 +2,6 @@
 
 
 $('#submit').click(function(event) {
-    console.log($('form').serializeArray());
     event.preventDefault();
     let $info = $('#q_form :input');
     let $title = $info[1].value;
@@ -15,7 +14,6 @@ $('#submit').click(function(event) {
         "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
-    console.log($form);
     $.ajax({
         type:'POST',  //127.0.0.1:8000/ask
         url: '/api/question/',

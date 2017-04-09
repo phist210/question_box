@@ -5,18 +5,21 @@ $('#plus_vote').click(function(event) {
     event.preventDefault();
     console.log("plus");
     let $info = $("#vote_form :input");
-    let $user_id = $info[1];
-    //let $q_id = $info[2];
+    for(var i = 0; i < $info.length; i++) {
+        console.log($info[i]);
+    }
+    let $user_id = $info[2];
+    //let $ans_id = $info[2];
     var $form = {
-        "user": 1, //needs to be $user_id,
-        "question": 1, //needs tobe $q_id
+        "user":  $('[name="user_id"]').val(),
+        "answer": 1, //needs to be ans_id
         "score": 1,
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
 
     $.ajax({
         type: 'POST',
-        url: '/api/votequestion/',
+        url: '/api/voteanswer/',
         data: $form,
         success: function(result) {
             alert("You Voted");
@@ -28,19 +31,19 @@ $('#plus_vote').click(function(event) {
 $('#minus_vote').click(function(event) {
     console.log("minus");
     let $info = $("#vote_form :input");
-    let $user_id = $info[1];
+    let $user_id = $info[2];
     //let $q_id = $info[2];
+    console.log($user_id);
     var $form = {
-        "user": 1, //needs to be $user_id
-        "question": 1, //needs to be $q_id
+        "user": $('[name="user_id"]').val(),
+        "answer": 1,
         "score": -1,
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
-    console.log($form);
 
     $.ajax({
         type: 'POST',
-        url: '/api/votequestion/',
+        url: '/api/voteanswer/',
         data: $form,
         success: function(result) {
             alert("You Voted");

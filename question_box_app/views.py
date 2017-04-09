@@ -77,7 +77,7 @@ def q_downvote(request, user_id, question_id):
     qv.save()
     return render(request, "question_box_app/q_vote.html", context)
 
-def display_q_vote_total(request, question_id=1):
+def q_vote_total(request, question_id=1):
     q_vote_total = [q.score for q in QuestionVote.objects.filter(question=question_id)]
     results = count_results(q_vote_total)
     score_num = score(results[0], results[1])
@@ -85,14 +85,11 @@ def display_q_vote_total(request, question_id=1):
     return render(request, "question_box_app/q_vote.html", context)
 
 
-def q_upvote(request, user_id, answer_id):
-    # make a new instance of the vote
-    qv = QuestionVote(user=user_id, answer=answer_id, score=1)
-    return redirect()
-
-
-
-    return render(request, 'question_box_app/vote.html', context)
+def ans_vote_total(request, answer_id=1):
+    ans_vote_total = [ans.score for ans in AnswerVote.objects.filter(answer=answer_id)]
+    results = count_results(ans_vote_total)
+    score_num = score(results[0], results[1])
+    return render(request, 'question_box_app/ans_vote.html', {'score': score_num})
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
