@@ -1,6 +1,16 @@
 
 // AJAX for answering
 
+// "reply" click link for answer comment form
+
+    $('.answer_comment_form').on('click', function(e){
+        e.preventDefault();
+        console.log('a');
+        $(this).next('.answer-comment-link').show();
+    });
+
+
+
 // answer comment js file
 
 
@@ -53,16 +63,6 @@ function getAnswerComments() {
   });
 }
 
-// "reply" click link for answer comment form
-
-$( function(){
-    $('.answer_comment_form').on('click', function(e){
-        e.preventDefault();
-        console.log('a');
-        $(this).next('.answer-comment-link').show();
-        // $('#acomment_form').removeClass('answer-comment-link').addClass('answer-comment-show');
-    });
-});
 
 // get answer function
 

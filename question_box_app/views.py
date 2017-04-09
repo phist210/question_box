@@ -16,7 +16,11 @@ def index(request):
 
 
 def profile(request):
-    return render(request, 'question_box_app/profile.html')
+    myuser = request.user
+    questionlist = [q.title for q in Question.objects.filter(user_id=myuser)]
+    answerlist = [a.text for a in Answer.objects.filter(user_id=myuser)]
+    context = {'questionlist': questionlist, 'answerlist': answerlist}
+    return render(request, 'question_box_app/profile.html', context)
 
 
 def question(request, question_id):

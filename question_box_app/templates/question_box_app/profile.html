@@ -2,13 +2,34 @@
 {% block extra_head %}
 {% load staticfiles %}
 <link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 {% include 'question_box_app/header.html' %}
 
 <div class='container'>
-  <div class='block'>
+  <h1>Welcome To Your Profile!</h1>
+  <h2>Here are your contributions!</h2>
+  <p><h3>Questions you've asked:</h3></p>
+  <div class='myquestion_block'>
+    <ul>
+      {% for question in questionlist %}
+        <li>
+          {{question}}
+        </li><br>
+      {% endfor %}
+    </ul>
+  </div>
+  <p><h3>Answers you've subitted:</h3></p>
+  <div class='myanswer_block'>
+    <ul>
+      {% for answer in answerlist %}
+        <li>
+          {{answer}}
+        </li><br>
+      {% endfor %}
+    </ul>
   </div>
 </div>
 
@@ -16,4 +37,5 @@
 
 {% block javascript %}
 
+<script src="{% static 'js/profile.js' %}?v=9"></script>
 {% endblock %}
