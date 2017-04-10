@@ -9,17 +9,14 @@
 <div class='header'>
   <div class='-container'>
     <div class="row">
-        <div class="six columns pull-left">
         <ul>
           <div id='logo'>
           <a href='/'>
             <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='45' width='50'/>
           </a>
+          <img src="{% static 'images/qbox.png' %}"/>
           <img src="{% static 'images/001-man-thinking.png' %}"/>
           </div>
-          <div id="title"><h3>Question Box</h3></div>
-      </div>
-      <div class="six columns pull-right">
           {% if user.is_authenticated %}
           <li style='float: right'><a id='logout' href='/logout'><img src="{% static 'images/001-logout.png' %}" alt="Logout"/> Logout </a></li>
           <li style='float: right'><a href="/profile" ><img src="{% static 'images/user.png'%}" alt='User'/>  Welcome, {{user}} </a></li>
@@ -31,7 +28,6 @@
           {% endif %}
 
     </ul>
-  </div>
 </div>
 </div>
 </div>
