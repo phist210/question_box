@@ -1,0 +1,9 @@
+/* css file for footer */
+
+#footer:img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    padding: 10px;
+}
