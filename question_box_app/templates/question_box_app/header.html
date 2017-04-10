@@ -17,13 +17,13 @@
       </div>
 
       {% if user.is_authenticated %}
-      <li style='float: right'><a id='logout' href='/logout'>Logout</a></li>
+      <li style='float: right'><a id='logout' href='/logout'><img src="{% static 'images/001-logout.png' %}" alt="Logout"/> Logout </a></li>
       <li style='float: right'><a href="/profile" ><img src="{% static 'images/user.png'%}" alt='User'/>  Welcome, {{user}} </a></li>
       <li style='float: right'><a href="/ask"><img src="{% static 'images/002-info.png'%}" alt="Question Mark"/></a></li>
 
       {% else %}
-      <li style='float: right'><a id='login' href='/login'>Login</a></li>
-      <li style='float: right'><a id='signup' href='/signup'>Signup</a></li>
+      <li style='float: right'><a id='login' href='/login'><img src="{% static 'images/login.png' %}" alt="login"/> Login </a></li>
+      <li style='float: right'><a id='signup' href='/signup'><img src="{% static 'images/002-clipboard-with-pencil.png' %}" alt="signup"/> Signup </a></li>
       {% endif %}
 
     </ul>
