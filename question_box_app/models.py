@@ -50,16 +50,19 @@ class AnswerComment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+
 class QuestionVote(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+
 
 class AnswerVote(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+
 
 class Tag(models.Model):
     text = models.TextField(max_length=10)
