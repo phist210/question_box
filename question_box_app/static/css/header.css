@@ -25,7 +25,8 @@ div#logo{
   height: auto;
   line-height: auto;
   margin: 0 auto;
-  display: inline-block;
+  display: inline;
+  position: relative;
 }
 
 div.header{
