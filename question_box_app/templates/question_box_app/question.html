@@ -20,7 +20,6 @@
       <h3>{{question.title}}</h3>
       <p>{{question.text}}</p>
       <p style='text-align: right;'>Posted by: {{question.user.username}}</p></br>
-      {#{% for answer in answers %}{{answer.id}} {% endfor %}#}
   </div>
   </div>
   </div>
@@ -43,14 +42,36 @@
   </div>
 
   <div class="row row-styles">
-      <div class="two columns">{% include 'question_box_app/ans_vote.html' %}</div>
+      <div class="two columns">
+          {% for ans in ans_score_list %}
+          <div class="vote_form">
+              <form method="POST">
+                {% csrf_token %}
+                <input name="ans_id" value="{{answer.id}}" style="display:none"/>
+                <input name="user_id" value="{{user.id}}" style="display:none"/>
+                <input name="q_id" value="{{question.id}}" style="display:none"/>
+                <div id="vote_area">
+                  <div id="plus_vote">
+                    <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
+                  </div>
+                <div id="vote_total">
+                  {{ ans }}
+                </div>
+                  <div id="minus_vote">
+                    <img src="{% static 'images/minus-sign.png' %}" alt="Down Vote"/>
+                </div>
+                </div>
+              </form>
+           </div>
+           {% endfor %}
+       </div>
       <div class="ten columns">
       <div class='answer_block'>
         <div class="ans_comment_form" id="acomment_form">
           <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-          <input name="answer_id" value='{{question.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
+          <input name="answer_id" value='{{answer.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
           <input name="user_id" value='{{user.id}}' style="display:none"/>
           <input type="submit" id="submit_acomment" value="Submit Comment"/>
           </form>
@@ -80,4 +101,5 @@
 <script src="{% static 'js/answer.js' %}"></script>
 <script src="{% static 'js/qcomment.js' %}"></script>
 <!-- <script src="{% static 'js/anscomment.js' %}?v=9"></script> -->
+<script type="text/javascript" src="{% static 'js/ans_vote.js' %}"></script>
 {% endblock %}

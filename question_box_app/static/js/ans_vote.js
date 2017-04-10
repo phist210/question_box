@@ -26,6 +26,7 @@ $('#plus_vote').click(function(event) {
 });
 
 $('#minus_vote').click(function(event) {
+    event.preventDefault();
     console.log("minus");
     let $info = $("#vote_form :input");
     let $user_id = $info[2];

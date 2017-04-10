@@ -86,3 +86,8 @@ p{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.vote_form {
+    position: relative;
+    padding-right: 20px;
+}
