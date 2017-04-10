@@ -18,10 +18,10 @@
         <div>{{question}}</div><br>
       {% endfor %}
   </div>
-  <h3>Answers you've subitted:</h3>
+  <h3>Answers you've submitted:</h3>
   <div class='myanswer_block'>
       {% for answer in answerlist %}
-        <div>{{answer}}</div><br>
+        <div>{{answer}} --- {{answer.question}}</div><br>
       {% endfor %}
   </div>
 </div>
