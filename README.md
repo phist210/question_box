@@ -52,7 +52,7 @@ Then navigate [here](http://127.0.0.1:8000/).
 
 * **Josh Friese** - *Initial work* - [phist210](https://github.com/phist210)
 * **Dana Walker** - *Initial work* - [CodeHeeler](https://github.com/CodeHeeler)
-* **Will Warren** - *Initial work* - [willwile04](https://github.com/willwile04)
+* **Will Warren** - *Initial work* - [willwile4](https://github.com/willwile4)
 
 ## Acknowledgments
 
