@@ -18,7 +18,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Run this to connect local server to database using PostgresSQL
+* [PostgreSQL](https://www.postgresql.org/download/) - An open source object-relational database system
+* [Postico](https://eggerapps.at/postico/) - A Modern PostgreSQL Client for OSX
+
+Python3:
+
+```
+pip install python3
+```
+
+Run this to connect local server to database using PostgresSQL:
 
 ```
 $ export DATABASE_URL=postgres:///<NAME OF DATABASE>
