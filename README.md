@@ -59,9 +59,9 @@ Then navigate [here](http://127.0.0.1:8000/).
 
 ## Authors
 
-* **Josh Friese** - *Initial work* - [phist210](https://github.com/phist210)
-* **Dana Walker** - *Initial work* - [CodeHeeler](https://github.com/CodeHeeler)
-* **Will Warren** - *Initial work* - [willwile4](https://github.com/willwile4)
+* **Josh Friese** - [phist210](https://github.com/phist210)
+* **Dana Walker** - [CodeHeeler](https://github.com/CodeHeeler)
+* **Will Warren** - [Portfolio](https://willwile4.github.io)
 
 ## Acknowledgments
 
