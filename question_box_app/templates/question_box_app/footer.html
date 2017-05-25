@@ -1,4 +1,4 @@
-{% extends 'question_box_app/base.html'%}
+
 {% load staticfiles %}
 {% block extrahead %}
 <link href="{% static 'css/footer.css' %}" rel="stylesheet">
@@ -6,8 +6,9 @@
 {% block content %}
 <div class="row">
 <div class="twelve columns" id="footer">
-    <img src="{% static 'images/storm.png' %}" alt="weather"/>
-    <img src="{% static 'images/cat.png' %}" alt="cat!"/>
+    <ul> Question Box *
+        <li><a href='https://willwile4.github.io'>Will Warren<a> *
+
 </div>
 </div>
 {% endblock %}

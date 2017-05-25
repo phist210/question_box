@@ -1,6 +1,5 @@
 //js file for question voting, click on plus is 1, click on minus is -1,
 //takes user, answer, score
-
 $('#plus_vote_ans').click(function(event) {
     event.preventDefault();
     console.log("plus");

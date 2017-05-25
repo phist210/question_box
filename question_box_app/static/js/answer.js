@@ -88,6 +88,16 @@ $('#submit_answer').click(function(event) {
     });
 });
 
+function getAnsVotes() {
+    $.ajax({
+        type:'GET',
+        url: '/api/voteanswer/',
+        success: function(result) {
+            console.log(result);
+        }
+
+    })
+}
 function getAnswers() {
   var $answerApi = "/api/answer/";
   var $full_url = document.URL; // Get current url
@@ -119,5 +129,6 @@ function getAnswers() {
     }
   });
 }
+
 
 getAnswers();

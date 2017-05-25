@@ -8,7 +8,7 @@
 {% include 'question_box_app/header.html' %}
 
 <div class='container'>
-  <div class='row row-styles'>
+  <div class='row row-styles'>  <!--question row-->
     <div class='two columns'>
         <div id='votes_temp'>
           {% include 'question_box_app/q_vote.html' %}
@@ -22,9 +22,9 @@
   </div>
   </div>
   </div>
-  <div class="row row-styles">
-      <div class="two columns"></div>
-      <div class="ten columns">
+  <div class="row row-styles">  <!--question comment row -->
+    <div class="two columns"></div>
+    <div class="ten columns">
         <div class='comment_block'>
           <a href='' class='question_comment_link' id='{{question.id}}'>Comment on question</a>
           <div class='question_comment_form' id="qcomment_form">
@@ -39,68 +39,55 @@
         </div>
     </div>
   </div>
-
+ {% for answer in answers %}
   <div class="row row-styles">
+      <!--answer row -->
       <div class="two columns">
-          {% for ans in ans_score_list %}
-          <div class="vote_form">
+          <div id="vote_form">
               <form method="POST">
                 {% csrf_token %}
-                <input name="ans_id" value="{{answer.id}}" style="display:none"/>
-                <input name="user_id" value="{{user.id}}" style="display:none"/>
+                <input name="ans_id" value="{{ans.id}}" style="display:none"/>
+                <input name="user_id" value="{{user.id}}" name="{{user.name}}" style="display:none"/>
                 <input name="q_id" value="{{question.id}}" style="display:none"/>
+              </form>
                 <div id="vote_area">
                   <div id="plus_vote_ans">
                     <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
                   </div>
-                <div id="vote_total">
-                  {{ ans }}
-                </div>
+                  <div class="vote_total">
+                     {{answer.1}}
+                  </div>
                   <div id="minus_vote_ans">
                     <img src="{% static 'images/minus-sign.png' %}" alt="Down Vote"/>
+                  </div>
                 </div>
-                </div>
-              </form>
            </div>
-           {% endfor %}
        </div>
-      <div class="ten columns">
-      <div class='answer_block'>
-        <div class="ans_comment_form" id="acomment_form">
-          <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-          <input name="answer_id" value='{{answer.id}}' style="display:none"/>  <!-- change value to correspond to respective answer -->
-          <input name="user_id" value='{{user.id}}' style="display:none"/>
-          <input type="submit" id="submit_acomment" value="Submit Comment"/>
-          </form>
+       <div class="ten columns">
+        <div class='answer_block {{n}}'>
+            {{answer.0.text}}<br>
+            by: {{answer.0.user}}<br>
+            at {{answer.0.created}}
         </div>
         </div>
-      </div>
-    </div>
-  <div class="row row-styles">
+     </div>
+  {% endfor %}
+  <div class="row row-styles">  <!-- write an answer row -->
     <div class="two columns"></div>
     <div class="ten columns">
     <div id="a_form">
-      <h2>Post an Answer</h2>
-        <form method='POST'>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input name="question_id" value="{{question.id}}" style="display:none"/>
-            <input name="user_id" value="{{user.id}}" style="display:none"/>
-            <input id="submit_answer" type='submit' value='Submit Answer'/>
-        </form>
+        {% include 'question_box_app/answer.html' %}
     </div>
   </div>
+  </div>
+    {% include 'question_box_app/footer.html' %}
 </div>
-</div>
-
-{% include 'question_box_app/footer.html' %}
 {% endblock %}
+
 {% block javascript %}
-<script src="{% static 'js/answer.js' %}"></script>
+<script src="{% static 'js/new_answer.js' %}"></script>
 <script src="{% static 'js/qcomment.js' %}"></script>
-<!-- <script src="{% static 'js/anscomment.js' %}?v=9"></script> -->
-<script type="text/javascript" src="{% static 'js/q_vote.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/ans_vote.js' %}"></script>
+<!-- <script src="{% static 'js/anscomment.js' %}"></script> -->
+<script src="{% static 'js/q_vote.js' %}"></script>
+<script  src="{% static 'js/ans_vote.js' %}"></script>
 {% endblock %}
