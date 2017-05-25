@@ -16,9 +16,6 @@ function upVote(n) {
         type: 'POST',
         url: '/api/voteanswer/',
         data: $form,
-        success: function(result) {
-            window.location.href = '';
-        }
     })
 }
 
@@ -28,6 +25,7 @@ function downVote(n) {
         "user": $('[name="user_id"]').val(),
         "answer": n,
         "score": -1,
+        "question": $('[name="q_id"]').val(),
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
 
@@ -36,7 +34,7 @@ function downVote(n) {
         url: '/api/voteanswer/',
         data: $form,
         success: function(result) {
-            window.location.href = '';
+            console.log('success');
         }
     })
 }
@@ -57,6 +55,7 @@ $('.plus_vote_ans').click(function(event) {
 });
 
 $('.minus_vote_ans').click(function(event) {
+    console.log('hi minus');
     minusId = event.target.id
-    $('#' + minusId).click(downVote(getNum(minusID)));
+    $('#' + minusId).click(downVote(getNum(minusId)));
 })

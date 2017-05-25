@@ -65,13 +65,12 @@ p{
 
 .comment_block{
   margin: 0 auto;
-  width:60%;
+  width: 60%;
 }
 
 .answer_block{
   margin: 0 auto;
-  margin-top: 10px;
-  border: 1px solid black;
+  margin-top: 10%;
 }
 
 .answer{
@@ -81,13 +80,17 @@ p{
 }
 
 .answer_comment{
+  float: right;
   font-size: 10px;
   width: 50%;
   margin: 0 auto;
 }
 
 .row-styles {
-    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    border-bottom: 1px solid #E4E6E8;
     padding-top: 10px;
     padding-bottom: 10px;
 }

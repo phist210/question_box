@@ -7,3 +7,10 @@
     vertical-align: middle;
     padding: 10px;
 }
+
+#footer ul {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+
+}
