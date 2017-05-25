@@ -1,19 +1,17 @@
 //js file for question voting, click on plus is 1, click on minus is -1,
 //takes user, answer, score
-$('#plus_vote_ans').click(function(event) {
-    event.preventDefault();
+
+
+function upVote(n) {
     console.log("plus");
-    let $info = $("#vote_form :input");
-    let $user_id = $info[2];
-    //let $ans_id = $info[2];
     var $form = {
         "user":  $('[name="user_id"]').val(),
-        "answer": $('[name="ans_id"]').val(),
+        "answer": n,
         "score": 1,
-        "question": $('name="q_id"]').val(),
+        "question": $('[name="q_id"]').val(),
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
-
+    console.log($form);
     $.ajax({
         type: 'POST',
         url: '/api/voteanswer/',
@@ -22,17 +20,13 @@ $('#plus_vote_ans').click(function(event) {
             window.location.href = '';
         }
     })
-});
+}
 
-$('#minus_vote_ans').click(function(event) {
-    event.preventDefault();
+function downVote(n) {
     console.log("minus");
-    let $info = $("#vote_form :input");
-    let $user_id = $info[2];
-    //let $q_id = $info[2];
     var $form = {
         "user": $('[name="user_id"]').val(),
-        "answer": $('[name="ans_id"]').val(),
+        "answer": n,
         "score": -1,
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
     }
@@ -45,4 +39,24 @@ $('#minus_vote_ans').click(function(event) {
             window.location.href = '';
         }
     })
+}
+
+
+function getNum(idTag) {
+    for(i = 0; i < idTag.length; i++) {
+        if(idTag[i] == 's') {
+            return idTag.slice(i+1);
+        }
+    }
+}
+
+$('.plus_vote_ans').click(function(event) {
+    console.log('hi');
+    plusId = event.target.id
+    $('#' + plusId).click(upVote(getNum(plusId)));
 });
+
+$('.minus_vote_ans').click(function(event) {
+    minusId = event.target.id
+    $('#' + minusId).click(downVote(getNum(minusID)));
+})

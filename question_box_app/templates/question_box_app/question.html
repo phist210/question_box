@@ -46,13 +46,13 @@
           <div id="vote_form">
               <form method="POST">
                 {% csrf_token %}
-                <input name="ans_id" value="{{ans.id}}" style="display:none"/>
+                <input name="ans_id" value="{{answer.0.id}}" style="display:none"/>
                 <input name="user_id" value="{{user.id}}" name="{{user.name}}" style="display:none"/>
                 <input name="q_id" value="{{question.id}}" style="display:none"/>
               </form>
                 <div id="vote_area">
-                  <div id="plus_vote_ans">
-                    <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
+                  <div class="plus_vote_ans">
+                    <img src="{% static 'images/plus-sign.png' %}" id="plus{{answer.0.id}}" alt="Up Vote"/>
                   </div>
                   <div class="vote_total">
                      {{answer.1}}
@@ -64,7 +64,7 @@
            </div>
        </div>
        <div class="ten columns">
-        <div class='answer_block {{n}}'>
+        <div class='answer_block'>
             {{answer.0.text}}<br>
             by: {{answer.0.user}}<br>
             at {{answer.0.created}}
@@ -85,7 +85,7 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="{% static 'js/new_answer.js' %}"></script>
+<script src="{% static 'js/answer.js' %}"></script>
 <script src="{% static 'js/qcomment.js' %}"></script>
 <!-- <script src="{% static 'js/anscomment.js' %}"></script> -->
 <script src="{% static 'js/q_vote.js' %}"></script>
