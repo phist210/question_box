@@ -11,7 +11,8 @@ from .vote_tally import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'question_box_app/index.html')
+    questions_list = Question.objects.all()
+    return render(request, 'question_box_app/index.html', {"questions": questions_list})
 
 
 def profile(request):
@@ -24,12 +25,14 @@ def profile(request):
 
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
-    answers_list = [ans.id for ans in Answer.objects.filter(question=question_id)]
+    ans_list = [ans for ans in Answer.objects.filter(question=question_id)]
     q_votes = q_vote_total(question_id)
     ans_votes_list = []
-    for ans in answers_list:
+    for ans in ans_list:
         ans_votes_list.append(ans_vote_total(question_id, ans))
-    context = {'question': question, 'form': AnswerQuestion, 'q_score': q_votes, "ans_score_list": ans_votes_list}
+    answers = zip(ans_list, ans_votes_list)
+    context = {'question': question, 'form': AnswerQuestion,
+               'answers': answers, 'q_score': q_votes}
     return render(request, 'question_box_app/question.html', context)
 
 

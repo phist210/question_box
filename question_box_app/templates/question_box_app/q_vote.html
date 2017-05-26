@@ -1,4 +1,4 @@
-{% extends 'question_box_app/base.html' %}
+
 {% load staticfiles %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/votes.css' %}"/>
@@ -11,13 +11,13 @@
       <input name="question_id" value="{{question.id}}" style="display:none"/>
       <input name="user_id" value="{{user.id}}" style="display:none"/>
       <div id="vote_area">
-        <div id="plus_vote">
+        <div id="plus_vote_q">
           <img src="{% static 'images/plus-sign.png' %}" alt="Up Vote"/>
         </div>
       <div id="vote_total">
         {{ q_score }}
       </div>
-        <div id="minus_vote">
+        <div id="minus_vote_q">
           <img src="{% static 'images/minus-sign.png' %}" alt="Down Vote"/>
       </div>
      </div>

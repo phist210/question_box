@@ -7,3 +7,14 @@
     vertical-align: middle;
     padding: 10px;
 }
+
+#footer ul {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+}
+
+#footer li {
+    list-style-type: none;
+    padding-right: 20px;
+}

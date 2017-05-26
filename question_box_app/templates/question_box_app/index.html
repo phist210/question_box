@@ -8,17 +8,15 @@
 {% include 'question_box_app/header.html' %}
 
 <div class='container'>
- <div class='row'>
-    <div class="two columns"></div>
-    <div class="ten columns">
-      <div class='block'>
+{% for q in questions %}
+      <div class="row" >
+          <div class="twelve columns question" id='{{q.id}}'>
+          <a href=/question/{{q.id}}> {{q.title}}</a><br>
+             {{q.text}}
+         </div>
       </div>
-    </div>
+{% endfor %}
 </div>
-</div>
-{% include 'question_box_app/footer.html' %}
-{% endblock %}
 
-{% block javascript %}
-<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+{% include 'question_box_app/footer.html' %}
 {% endblock %}

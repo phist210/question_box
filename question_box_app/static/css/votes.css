@@ -1,7 +1,15 @@
 /* css file for voting divs*/
 
 #vote_area {
-    font-size: 36pt;
-    text-align: center;
+    font-size: 24pt;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-content: space-around;
     float: left;
+}
+
+#vote_area img {
+    height: 60%;
+    width: 60%;
 }
