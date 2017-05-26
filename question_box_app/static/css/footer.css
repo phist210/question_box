@@ -10,7 +10,6 @@
 
 #footer ul {
     display: flex;
-    justify-content: space-between;
     flex-flow: row;
     align-content: center;
 }
