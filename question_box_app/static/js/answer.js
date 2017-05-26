@@ -10,7 +10,6 @@ $('#submit_acomment').click( function(event) {
         "text": $text,
         "user": $user,
         "answer": $answer,  //  make this work with the respective answer after implementing the form on click
-        "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
     $.ajax({
@@ -59,7 +58,6 @@ $('#submit_answer').click(function(event) {
         "text": $text,
         "question": $questionid,
         "user": $user,
-        "created": " ",
         'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()
     }
     $.ajax({

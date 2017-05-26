@@ -1,0 +1,16 @@
+
+{% load staticfiles %}
+{% block content %}
+<h2>Post an Answer</h2>
+  <form method='POST'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input name="question_id" value="{{question.id}}" style="display:none"/>
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
+      <input id="submit_answer" type='submit' value='Submit Answer'/>
+  </form>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/answer.js' %}"></script>
+{% endblock %}
