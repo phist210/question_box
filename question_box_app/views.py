@@ -11,7 +11,8 @@ from .vote_tally import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'question_box_app/index.html')
+    questions_list = Question.objects.all()
+    return render(request, 'question_box_app/index.html', {"questions": questions_list})
 
 
 def profile(request):

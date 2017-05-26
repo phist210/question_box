@@ -16,6 +16,9 @@ function upVote(n) {
         type: 'POST',
         url: '/api/voteanswer/',
         data: $form,
+        success: function(result) {
+          window.location.href = '';
+      }
     })
 }
 
@@ -34,8 +37,8 @@ function downVote(n) {
         url: '/api/voteanswer/',
         data: $form,
         success: function(result) {
-            console.log('success');
-        }
+          window.location.href = '';
+      }
     })
 }
 

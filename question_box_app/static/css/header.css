@@ -1,46 +1,38 @@
-ul {
-  list-style-type: none;
+#nav {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li {
-  float: left;
+#logo {
+    width: 50%;
+    float: left;
 }
 
-li a {
-  display: block;
+#nav-links {
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+
+#nav-links img {
+    margin: 5px 10px 5px 10px;
+}
+#nav-links a {
   color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-li a:hover {
-  background-color: #ccc;
+#nav-links a:hover {
+  border-bottom: 3px solid orange;
 }
 
-div#logo{
-  height: auto;
-  line-height: auto;
-  margin: 0 auto;
-  display: inline;
-  position: relative;
+.nav-words {
+    text-align: center;
 }
 
 div.header{
   width: 100%;
   background-color: #F1F1F1;
-
-}
-
-div.-container{
-  width: 80%;
-  margin: 0 auto;
-
-}
-
-#title {
-    margin-top: 5px;
 }
