@@ -34,5 +34,6 @@
 
 div.header{
   width: 100%;
+  border-top: 3px solid orange;
   background-color: #F1F1F1;
 }
