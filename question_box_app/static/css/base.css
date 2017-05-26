@@ -9,13 +9,6 @@ a:active, a, a:visited{
   text-decoration: none;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
 a:hover{
   color: blue;
 }
@@ -37,11 +30,6 @@ p{
   display: none;
 }
 
-.container{
-  margin: 0 auto;
-  padding: 10px;
-}
-
 .question_block{
   padding: 10px;
   float: left;
@@ -50,9 +38,8 @@ p{
 .question{
   padding: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px gray solid;
+  border-bottom: 1px solid #E4E6E8;
   float: left;
-  width: 80%;
   height: 60px;
   overflow: hidden;
 }
@@ -65,13 +52,12 @@ p{
 
 .comment_block{
   margin: 0 auto;
-  width:60%;
+  width: 60%;
 }
 
 .answer_block{
   margin: 0 auto;
-  margin-top: 10px;
-  border: 1px solid black;
+  margin-top: 10%;
 }
 
 .answer{
@@ -81,13 +67,17 @@ p{
 }
 
 .answer_comment{
+  float: right;
   font-size: 10px;
   width: 50%;
   margin: 0 auto;
 }
 
 .row-styles {
-    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    border-bottom: 1px solid #E4E6E8;
     padding-top: 10px;
     padding-bottom: 10px;
 }
