@@ -10,8 +10,8 @@
 
 #footer ul {
     display: flex;
+    justify-content: center;
     flex-flow: row;
-    align-content: center;
 }
 
 #footer li {
