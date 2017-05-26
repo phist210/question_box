@@ -1,14 +1,14 @@
-{% extends 'question_box_app/base.html' %}
-{% block content %}
 
-<form action="/answer/" method="POST" id="answer_form">
-  {% csrf_token %}
-  <div class="fieldWrapper" id="the_answer">
-      {{ form.text }}
-  </div>
-  <div id="results"></div> <!-- errors go here -->
-  <input type="submit" value="Post" class="button" id="submit_answer">
-</form>
+{% load staticfiles %}
+{% block content %}
+<h5>Post an Answer</h5>
+  <form method='POST'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input name="question_id" value="{{question.id}}" style="display:none"/>
+      <input name="user_id" value="{{user.id}}" style="display:none"/>
+      <input id="submit_answer" type='submit' value='Submit Answer'/>
+  </form>
 {% endblock %}
 
 {% block javascript %}

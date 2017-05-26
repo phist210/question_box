@@ -8,28 +8,24 @@
 {% block content %}
 <div class='header'>
   <div class='-container'>
-    <div class="row">
-        <ul>
-          <div id='logo'>
-          <a href='/'>
-            <img src='{% static "/images/stackoverflow.png" %}' alt='Question Box' height='45' width='50'/>
-          </a>
+    <div class="row nav">
+      <div id='logo'>
+      <a href='/'>
           <img src="{% static 'images/001-man-thinking.png' %}"/>
           <img src="{% static 'images/qbox.png' %}"/>
-          <img src="{% static 'images/001-businessman-with-doubts.png' %}"/>
-          </div>
-          {% if user.is_authenticated %}
-          <li style='float: right'><a id='logout' href='/logout'><img src="{% static 'images/001-logout.png' %}" alt="Logout"/> Logout </a></li>
-          <li style='float: right'><a href="/profile" ><img src="{% static 'images/betteruser.png'%}" alt='User'/>  Welcome, {{user}} </a></li>
-          <li style='float: right'><a href="/ask"><img src="{% static 'images/002-question-mark.png'%}" alt="Question Mark"/> Ask </a></li>
-
-          {% else %}
-          <li style='float: right'><a id='login' href='/login'><img src="{% static 'images/login.png' %}" alt="login"/> Login </a></li>
-          <li style='float: right'><a id='signup' href='/signup'><img src="{% static 'images/002-clipboard-with-pencil.png' %}" alt="signup"/> Signup </a></li>
-          {% endif %}
-
-    </ul>
-</div>
-</div>
+          <img src="{% static 'images/001-businessman-with-doubts.png' %}"/></a>
+      </div>
+      <div id="nav-links">
+      {% if user.is_authenticated %}
+          <a id='logout' href='/logout'><img src="{% static 'images/001-logout.png' %}" alt="Logout"/><span class="nav-words">Logout</span></a>
+          <a href="/profile" ><img src="{% static 'images/betteruser.png'%}" alt='User'/><span class="nav-words">Welcome, {{user}}</span></a>
+          <a href="/ask"><img src="{% static 'images/002-question-mark.png'%}" alt="Question Mark"/><span class="nav-words">Ask</span> </a>
+      {% else %}
+          <a id='login' href='/login'><img src="{% static 'images/login.png' %}" alt="login"/><span class="nav-words">Login</span></a>
+          <a id='signup' href='/signup'><img src="{% static 'images/002-clipboard-with-pencil.png' %}" alt="signup"/><span class="nav-words"> <span class="nav-words">Signup </span></a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

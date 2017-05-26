@@ -1,7 +1,7 @@
 //js file for question voting, click on plus is 1, click on minus is -1,
 //takes user, answer, score
 
-$('#plus_vote').click(function(event) {
+$('#plus_vote_q').click(function(event) {
     event.preventDefault();
     var $form = {
         "user": $('[name="user_id"]').val(),
@@ -20,7 +20,7 @@ $('#plus_vote').click(function(event) {
     })
 });
 
-$('#minus_vote').click(function(event) {
+$('#minus_vote_q').click(function(event) {
     event.preventDefault();
     var $form = {
         "user": $('[name="user_id"]').val(),

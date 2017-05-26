@@ -27,13 +27,7 @@ class Answer(models.Model):
 
     def __str__(self):
         return '{}'.format(self.text)
-    # accepted_answer = models.BooleanField(default=False)
-#
-#
-# class AcceptedAnswer(models.Model):  back burnah
-#     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
-#     # question = models.ForeignKey(Question, on_delete=models.CASCADE)
-
+        
 
 class QuestionComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

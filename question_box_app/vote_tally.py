@@ -31,5 +31,8 @@ def ans_vote_total(question_id, answer_id):
     all_scores = [ans.score for ans in AnswerVote.objects.filter(answer=answer_id)]
     results = count_results(all_scores)
     score_num = score(results[0], results[1])
-    print(score_num)
     return score_num
+
+
+def pin_to_answer(answer_votes, answers):
+    return zip(answer_votes, answers)
