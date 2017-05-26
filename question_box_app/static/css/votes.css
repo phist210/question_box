@@ -2,7 +2,10 @@
 
 #vote_area {
     font-size: 24pt;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-content: space-around;
     float: left;
 }
 
